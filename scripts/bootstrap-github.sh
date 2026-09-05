@@ -17,6 +17,8 @@ ORG="${ORG:-bgin-global}"; REPO="${REPO:-pqc-agility-competition}"; FULL="$ORG/$
 DESC="BGIN coordination repository for the METI/NEDO PQC Migration Prize: evaluation committee, outcomes, metrics, crypto-agility testbed"
 cd "$(git rev-parse --show-toplevel)"
 need() { command -v "$1" >/dev/null 2>&1 || { echo "missing: $1 (Windows: winget install GitHub.cli)" >&2; exit 1; }; }
+# Windows ships a "python3" stub that only opens the Store; prefer whichever interpreter actually runs.
+PY="$(python3 -c "print(1)" >/dev/null 2>&1 && echo python3 || echo python)"
 say() { printf '\n== %s ==\n' "$*"; }
 
 preflight() {
@@ -84,7 +86,7 @@ rulesets() {
   need gh
   existing="$(gh api --paginate "repos/$FULL/rulesets" -q '.[] | "\(.id) \(.name)"')"
   for f in .github/rulesets/*.json; do
-    name="$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['name'])" "$f")"
+    name="$($PY -c "import json,sys;print(json.load(open(sys.argv[1]))['name'])" "$f")"
     id="$(printf '%s\n' "$existing" | awk -v n="$name" '{ id=$1; $1=""; sub(/^ /,""); if ($0==n) print id }' | head -1)"
     if [ -n "$id" ]; then echo "+ update ruleset '$name' (#$id)"; gh api -X PUT "repos/$FULL/rulesets/$id" --input "$f" >/dev/null
     else echo "+ create ruleset '$name'"; gh api -X POST "repos/$FULL/rulesets" --input "$f" >/dev/null; fi
