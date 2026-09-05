@@ -5,7 +5,7 @@ All notable changes to this repository are recorded here. The format follows [Ke
 ## [Unreleased]
 
 ### Notes
-- 2026-09-05: repository staged under `mitchuski/pqc-agility-competition` pending transfer into `bgin-global` (convener not yet an organization member).
+- 2026-09-05: repository created under `mitchuski/pqc-agility-competition` with the full hardening, then transferred the same day into `bgin-global` (history, signatures, rulesets, and settings carried over; teams `pqc-conveners`, `pqc-maintainers`, `pqc-evaluation`, `pqc-testbed` created).
 
 ### Added
 - Repository charter: README, governance (evaluation committee phases, composition, decision process), empty roster, core outcomes O1–O6, contributing guide.
