@@ -4,6 +4,9 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Notes
+- 2026-09-05: repository staged under `mitchuski/pqc-agility-competition` pending transfer into `bgin-global` (convener not yet an organization member).
+
 ### Added
 - Repository charter: README, governance (evaluation committee phases, composition, decision process), empty roster, core outcomes O1–O6, contributing guide.
 - Evaluation drafts: metric register M-01…M-22, rubric skeleton with gates G1–G4, conflict-of-interest policy.

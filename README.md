@@ -76,6 +76,8 @@ resources/                source material with provenance: NEDO briefing PDF + b
 
 ## Status
 
+> **Staging location.** This repository is staged at `github.com/mitchuski/pqc-agility-competition` (signed history, full hardening applied) and will be transferred into the `bgin-global` organization once the convener's organization membership is in place. GitHub redirects the old URL after transfer; the badges and citation above already name the destination.
+
 **Phase A (Autumn 2026): committee forming; outcomes, metrics, and testbed spec in draft.**
 Indicative calendar (all dates provisional until confirmed by organizers):
 
