@@ -102,7 +102,7 @@ Indicative calendar (all dates provisional until confirmed by organizers):
 - **Testbed node host** — a university or neutral lab hosts a BSafe.network evaluation node (contracting later; role separated from judging).
 - **SSR workshop** — shape the 13 Dec 2026 programme; review; speak.
 - **Submit / build** — enter the prize when the official call opens (planned 2027).
-- **Discuss & amplify** — Discourse, GDC / Block / CSS-BWS sessions.
+- **Discuss & amplify** — the public [BGIN Discourse](https://bgin.discourse.group) (IKP working group), GDC / Block / CSS-BWS sessions. Participants (committee, advisors, node hosts, entrants) also get a private Discourse space run by the conveners; decisions still land here (`GOVERNANCE.md` §7).
 
 ## Integrity
 

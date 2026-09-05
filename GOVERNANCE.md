@@ -70,6 +70,16 @@ Members serve through Phase A; re-confirmation for A2 / B. A member may step dow
 
 ## 7. Records and cadence
 
+**Channels.** Three channels, one record:
+
+| Channel | Who | What belongs there |
+|---|---|---|
+| [BGIN Discourse](https://bgin.discourse.group) (public; IKP working-group category) | anyone | open discussion, proposals, announcements, public comment on drafts |
+| Private participants' Discourse (being set up by the conveners; invitation only) | committee members, advisors, node hosts, entrants once the call opens | conflict-of-interest disclosures, recusal handling, node-operations coordination, submission logistics — anything that must not be public before the host allows it |
+| This repository (issues, pull requests, decision records) | contributors with signing keys | **the record**: nothing decided in either Discourse counts until it lands here by signed pull request |
+
+GitHub Discussions are disabled on purpose; the private space is not a second record, and a summary of any private discussion that shapes a decision goes into the decision record.
+
 - Workshops: roughly monthly, W1–W6 (`workshops/ROADMAP.md`); each produces a record from `workshops/TEMPLATE.md`.
 - Between workshops: Discourse plus asynchronous PR review.
 - Minutes, drafts, and decisions are public unless the host requires otherwise.
