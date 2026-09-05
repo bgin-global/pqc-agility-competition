@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "PQC Migration Prize — Crypto-Agility Competition (BGIN coordination repository)"
+message: "If you cite the evaluation framework, rubric, or testbed specification, cite the signed tag you used."
+type: dataset
+authors:
+  - name: "Blockchain Governance Initiative Network (BGIN), Identity, Key Management and Privacy Working Group"
+repository-code: "https://github.com/bgin-global/pqc-agility-competition"
+url: "https://bgin-global.org/projects/pqc-migration"
+license: "CC-BY-4.0"
+keywords:
+  - post-quantum cryptography
+  - crypto agility
+  - blockchain
+  - evaluation testbed
+  - BGIN
+  - ISO/TC 307
+abstract: "Coordination record for the METI/NEDO-hosted PQC Migration Prize Competition: evaluation committee governance, core outcomes, metric register and rubric, neutral testbed specification for pre-existing post-quantum signature schemes mapped to Bitcoin and Ethereum, and the workshop series that ratifies them."

@@ -1,0 +1,10 @@
+# SSH allowed signers for local verification of this repository's commits and tags.
+# Format (see ssh-keygen(1) ALLOWED SIGNERS): <principal> [options] <key-type> <base64-key> [comment]
+#   principal = the committer email exactly as it appears in the commit (e.g. name@users.noreply.github.com)
+#   options   = namespaces="git" and optionally valid-after="YYYYMMDD" / valid-before="YYYYMMDD" for rotation
+# Server-side verification uses the signing keys registered on each contributor's GitHub account; this file
+# lets anyone verify the history offline: scripts/verify-history.sh. Add your key by pull request, signed with it.
+#
+# Example:
+# alice@example.org namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA... pqc-agility signing key 2026
+mitchuski@users.noreply.github.com namespaces="git" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBG5Z6aOhrhc/jX/aAgh4krSW600ZVYEoqXXqQJymyvM pqc-agility signing 2026 (convener)

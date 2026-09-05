@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bgin-global.org/pqc-agility-competition/testbed/result.schema.json",
+  "title": "Testbed run result (draft v0)",
+  "type": "object",
+  "required": ["run_id", "manifest", "measurements", "attestation"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "manifest": {
+      "type": "object",
+      "required": ["scheme_id", "param_set", "implementation", "harness_version", "node", "fixtures", "started_at", "finished_at"],
+      "properties": {
+        "scheme_id": { "type": "string", "pattern": "^[SBC]-[0-9]{2}$" },
+        "param_set": { "type": "string" },
+        "implementation": {
+          "type": "object",
+          "required": ["name", "repo", "commit", "build_flags"],
+          "properties": {
+            "name": { "type": "string" },
+            "repo": { "type": "string" },
+            "commit": { "type": "string" },
+            "build_flags": { "type": "string" },
+            "compiler": { "type": "string" },
+            "version": { "type": "string" }
+          }
+        },
+        "harness_version": { "type": "string" },
+        "node": {
+          "type": "object",
+          "required": ["id", "host_org", "region", "hw_fingerprint", "os_image_digest", "container_digest"],
+          "properties": {
+            "id": { "type": "string" },
+            "host_org": { "type": "string" },
+            "region": { "type": "string" },
+            "hw_fingerprint": { "type": "string" },
+            "os_image_digest": { "type": "string" },
+            "container_digest": { "type": "string" }
+          }
+        },
+        "fixtures": {
+          "type": "object",
+          "required": ["corpus_id", "key_set_id"],
+          "properties": {
+            "corpus_id": { "type": "string" },
+            "key_set_id": { "type": "string" },
+            "block_mix_id": { "type": "string" },
+            "legacy_corpus_id": { "type": "string" }
+          }
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "finished_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["metric_id", "value", "unit", "n"],
+        "properties": {
+          "metric_id": { "type": "string", "pattern": "^M-[0-9]{2}$" },
+          "value": { "type": "number" },
+          "unit": { "type": "string" },
+          "n": { "type": "integer", "minimum": 1 },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "min": { "type": "number" },
+              "median": { "type": "number" },
+              "p99": { "type": "number" },
+              "max": { "type": "number" }
+            }
+          },
+          "params": { "type": "object", "description": "scenario parameters, e.g. {\"n_signers\": 1024}" }
+        }
+      }
+    },
+    "attestation": {
+      "type": "object",
+      "required": ["operator_key_id", "signature", "canonical_hash"],
+      "properties": {
+        "operator_key_id": { "type": "string" },
+        "signature": { "type": "string" },
+        "canonical_hash": { "type": "string" }
+      }
+    }
+  }
+}

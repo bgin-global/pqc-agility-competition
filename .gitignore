@@ -1,0 +1,9 @@
+# local scratch
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+# harness build artefacts (once code lands)
+testbed/harness/build/
+testbed/harness/target/
+testbed/results/raw/

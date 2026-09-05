@@ -1,0 +1,59 @@
+name: provenance
+
+# Every pull request and every push to main: each commit must carry a matching DCO sign-off and be reported by
+# GitHub as cryptographically verified; the repository's own records must validate. The three job names below are
+# the required status checks in .github/rulesets/main.json (dco, signatures, validate).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dco:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Every commit carries a matching Signed-off-by
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: bash scripts/ci/check-dco.sh
+
+  signatures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Every commit is verified by GitHub
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: bash scripts/ci/check-signatures.sh
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Rulesets and result schema are valid JSON
+        run: |
+          for f in .github/rulesets/*.json testbed/schema/*.json; do python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f" && echo "ok $f"; done
+      - name: Relative Markdown links resolve
+        run: |
+          fail=0
+          while IFS=: read -r file link; do
+            dir="$(dirname "$file")"; target="${link%%#*}"
+            [ -z "$target" ] && continue
+            if [ ! -e "$dir/$target" ] && [ ! -e "$target" ]; then echo "::error file=$file::broken link $link"; fail=1; fi
+          done < <(grep -o -H -E '\]\(([^)#:]+)(#[^)]*)?\)' --include='*.md' -r . | sed -E 's/\]\((.*)\)$/\1/' | sed -E 's/^\.\///')
+          exit $fail
+      - name: Hooks and scripts are executable and shell-clean
+        run: |
+          for f in .githooks/* scripts/*.sh scripts/ci/*.sh; do bash -n "$f" && echo "syntax ok $f"; done

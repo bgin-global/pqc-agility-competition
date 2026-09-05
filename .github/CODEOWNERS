@@ -1,0 +1,21 @@
+# Code owners — reviews from the listed owners are REQUIRED by the main-branch ruleset.
+# Replace the placeholder teams once the bgin-global teams exist (see docs/SECURITY_MODEL.md, "Teams").
+# Order matters: the last matching pattern wins.
+
+*                         @bgin-global/pqc-maintainers
+
+# Governance and scope: conveners only
+/GOVERNANCE.md            @bgin-global/pqc-conveners
+/COMMITTEE.md             @bgin-global/pqc-conveners
+/OUTCOMES.md              @bgin-global/pqc-conveners
+/decisions/               @bgin-global/pqc-conveners
+/SECURITY.md              @bgin-global/pqc-conveners
+/docs/SECURITY_MODEL.md   @bgin-global/pqc-conveners
+/.github/                 @bgin-global/pqc-conveners
+/.githooks/               @bgin-global/pqc-conveners
+/scripts/                 @bgin-global/pqc-conveners
+/.allowed_signers         @bgin-global/pqc-conveners
+
+# Evaluation and testbed: the seat that owns the file plus maintainers
+/evaluation/              @bgin-global/pqc-evaluation @bgin-global/pqc-maintainers
+/testbed/                 @bgin-global/pqc-testbed @bgin-global/pqc-maintainers

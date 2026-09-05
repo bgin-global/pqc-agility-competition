@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# commit-msg hook: every commit carries a Developer Certificate of Origin sign-off (DCO.md).
+# Installed by scripts/setup-signing.sh via core.hooksPath. Adds the trailer if missing, then verifies it matches the author.
+set -euo pipefail
+MSG="$1"
+NAME="$(git config user.name || true)"
+EMAIL="$(git config user.email || true)"
+if [ -z "$NAME" ] || [ -z "$EMAIL" ]; then
+  echo "commit-msg: git user.name / user.email are not set; cannot sign off (DCO.md)" >&2
+  exit 1
+fi
+SIGNOFF="Signed-off-by: $NAME <$EMAIL>"
+if ! grep -q -F "$SIGNOFF" "$MSG"; then
+  if grep -q -E '^Signed-off-by:' "$MSG"; then
+    echo "commit-msg: a Signed-off-by trailer is present but does not match user.name <user.email> ($NAME <$EMAIL>)" >&2
+    exit 1
+  fi
+  # append a blank line before the trailer if the message does not end with one
+  if [ -s "$MSG" ] && [ -n "$(tail -c1 "$MSG")" ]; then printf '\n' >> "$MSG"; fi
+  if [ -s "$MSG" ] && [ -n "$(tail -n1 "$MSG")" ]; then printf '\n' >> "$MSG"; fi
+  printf '%s\n' "$SIGNOFF" >> "$MSG"
+  echo "commit-msg: added '$SIGNOFF' (DCO.md)" >&2
+fi
