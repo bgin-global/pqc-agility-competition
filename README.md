@@ -14,6 +14,8 @@ This repository is where the collaborative, pre-call work happens:
 
 Discussion happens on the [BGIN Discourse](https://bgin.discourse.group). This repository is the **record**: decisions, drafts, source material, and testbed specifications. Nothing here is final until the evaluation committee ratifies it and the host publishes the official call.
 
+A small amount of material cannot be published here — uncleared sources, nominations and conflict-of-interest disclosures, drafts under embargo. The *rule* for what is held back, and the gate it passes through to be released, is public: [`docs/CONFIDENTIALITY.md`](docs/CONFIDENTIALITY.md).
+
 ## What it is — and what it is not
 
 | It is | It is not |
