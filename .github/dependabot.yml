@@ -1,6 +1,6 @@
 version: 2
 updates:
-  # Keep the SHA-pinned actions current (mirrors the Trust over IP setup).
+  # Keep the SHA-pinned actions current.
   - package-ecosystem: github-actions
     directory: /
     schedule:

@@ -18,20 +18,20 @@ This repository is the record of a competition whose rubric and evidence are mea
 
 - **Commits:** signed at creation (`commit.gpgsign`) and refused otherwise by the `all branches` ruleset. Web-UI edits are signed by GitHub's own key and get a sign-off because `web_commit_signoff_required` is on.
 - **Push:** GitHub does not verify git push certificates (`git push --signed`), so "signed push" is realized as *every commit in the push is signed* — checked by the client `pre-push` hook and by the server rule. There is no way to land an unsigned object on any branch.
-- **Pull requests:** the PR's commits must be signed and signed-off (`signatures`, `dco` checks); the merge is a squash or rebase whose resulting commit GitHub signs with its web-flow key (this is how Trust over IP's history shows as verified); the reviewer's approval is bound to the last push (`require_last_push_approval`), so a later push cannot ride an earlier approval.
+- **Pull requests:** the PR's commits must be signed and signed-off (`signatures`, `dco` checks); the merge is a squash or rebase whose resulting commit GitHub signs with its web-flow key; the reviewer's approval is bound to the last push (`require_last_push_approval`), so a later push cannot ride an earlier approval.
 - **Tags:** signed by the admin who cuts them; only admins may.
 
-## 3. Measured baseline: Trust over IP (read 2026-09-05, `trustoverip/dtgwg-zkp-spec`)
+## 3. Baseline controls
 
-| Control | Trust over IP | This repository |
-|---|---|---|
-| DCO sign-off | DCO app check on PRs; `web_commit_signoff_required` | Same, plus client hook and CI job `dco` that also matches the sign-off to the author |
-| CLA | EasyCLA (Linux Foundation) required check | Not applicable unless BGIN adopts a CLA; DCO carries the certification |
-| Cryptographic signatures | Not required by rule; history is verified because GitHub signs merges | **Required on every branch and tag**, no bypass |
-| `main` | PR required (0 approvals), no force-push, no deletion | PR with 1 approval + code owners + last-push approval + threads resolved + 3 required checks + linear history |
-| Org ruleset | "no creations": repository create / delete / transfer blocked | Recommended for `bgin-global` (section 5) |
-| Actions | SHA-pinned, `permissions: contents: read`, Dependabot weekly | Same |
-| Bypass | none visible | none |
+| Control | This repository |
+|---|---|
+| DCO sign-off | `web_commit_signoff_required`, client `commit-msg` hook, and CI job `dco` that also matches the sign-off to the author |
+| CLA | None; the DCO carries the certification unless BGIN adopts a CLA |
+| Cryptographic signatures | **Required on every branch and tag**, no bypass |
+| `main` | PR with 1 approval + code owners + last-push approval + threads resolved + 3 required checks + linear history; no force-push, no deletion |
+| Org ruleset | "no creations" (repository create / delete / transfer blocked) — recommended for `bgin-global`, section 5; not available on the organization's current plan |
+| Actions | SHA-pinned, `permissions: contents: read`, Dependabot weekly |
+| Bypass | none |
 
 ## 4. Teams and ownership
 
@@ -49,7 +49,7 @@ Admin (the role that may cut tags and edit rulesets) is held by the organization
 These cannot be set from inside the repository; an organization owner runs them once.
 
 1. **Require two-factor authentication** for all members and outside collaborators.
-2. **Org ruleset "no creations"** mirroring Trust over IP: block repository create / delete / transfer except by owners (Settings → Repository → Rulesets → New ruleset, target *repository*).
+2. **Org ruleset "no creations"**: block repository create / delete / transfer except by owners (Settings → Repository → Rulesets → New ruleset, target *repository*).
 3. **Base permission** for members: *read* (or *none*); access flows through the four teams.
 4. **Install the DCO GitHub App** on the organization (adds a second, independent `DCO` check; add it to `main.json` required checks once it appears).
 5. **Actions policy** at org level: allow only GitHub-owned and verified-creator actions; require approval for first-time contributors' workflow runs; default `GITHUB_TOKEN` read-only.
