@@ -17,6 +17,7 @@ Every entry: what it is, where it came from, when, who circulated it, and whethe
 
 | Thread | Why |
 |---|---|
+| [Post-Quantum Crypto Agility Competition — category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) | The competition's public home on the BGIN Discourse: launch, nominations, metrics and schemes, testbed nodes, workshop threads |
 | [IKP Post Quantum Cryptography Thread 06/26](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001) | The IKP-WG PQC archive thread: talk series, papers (Google cryptocurrency whitepaper; *Formalizing Blockchain PQC Signature Transition: How to Outpace Quantum Adversaries*, ePrint 2026/952; Oratomic, arXiv 2603.28627), ecdsa.fail tracker |
 | [GDC26 meeting report published: PQC Migration on DLTs](https://bgin.discourse.group/t/gdc26-meeting-report-published-post-quantum-cryptography-migration-on-dlts/1045) | Report post + invitation for public comments, definitional proposals, and evaluation-committee participation |
 | [GDC26 meeting report now on the BGIN website (PQC)](https://bgin.discourse.group/t/gdc26-meeting-report-now-on-the-bgin-website-post-quantum-cryptography-migration-on-dlts/1046) | Same report, IKP category |

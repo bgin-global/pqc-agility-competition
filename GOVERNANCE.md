@@ -74,7 +74,7 @@ Members serve through Phase A; re-confirmation for A2 / B. A member may step dow
 
 | Channel | Who | What belongs there |
 |---|---|---|
-| [BGIN Discourse](https://bgin.discourse.group) (public; IKP working-group category) | anyone | open discussion, proposals, announcements, public comment on drafts |
+| [BGIN Discourse — *Post-Quantum Crypto Agility Competition* category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) (public; the [IKP working-group category](https://bgin.discourse.group/c/working-group-s/ikp-wg/8) carries the wider PQC arc) | anyone | open discussion, proposals, announcements, public comment on drafts |
 | Private participants' Discourse (being set up by the conveners; invitation only) | committee members, advisors, node hosts, entrants once the call opens | conflict-of-interest disclosures, recusal handling, node-operations coordination, submission logistics — anything that must not be public before the host allows it |
 | This repository (issues, pull requests, decision records) | contributors with signing keys | **the record**: nothing decided in either Discourse counts until it lands here by signed pull request |
 

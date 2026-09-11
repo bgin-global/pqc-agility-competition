@@ -5,7 +5,7 @@ This repository is the record; the BGIN Discourse is the conversation. Most cont
 ## Ground rules
 
 - **Signed and signed-off, always.** Every commit carries a cryptographic signature from a key registered on your GitHub account and a `Signed-off-by` trailer certifying the [DCO](DCO.md). Unsigned pushes are refused. Setup: `scripts/setup-signing.sh`, details in [`docs/SIGNING.md`](docs/SIGNING.md).
-- **Discourse first.** Substantive proposals link a thread on the public [BGIN Discourse](https://bgin.discourse.group); participant-only matters (COI, node operations, submissions) go to the private participants' Discourse the conveners run. Neither is the record — this repository is. PRs that change `OUTCOMES.md`, `evaluation/`, `testbed/SCHEMES.md`, or `GOVERNANCE.md` must cite the thread and, where relevant, the workshop record.
+- **Discourse first.** Substantive proposals link a thread in the public [competition category on the BGIN Discourse](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44); participant-only matters (COI, node operations, submissions) go to the private participants' Discourse the conveners run. Neither is the record — this repository is. PRs that change `OUTCOMES.md`, `evaluation/`, `testbed/SCHEMES.md`, or `GOVERNANCE.md` must cite the thread and, where relevant, the workshop record.
 - **Provenance on every source.** Anything added to `resources/` gets a row in `resources/README.md`: origin, date, who circulated it, and whether it is public. Do not add documents you are not permitted to publish; link them instead.
 - **Neutral voice.** No vendor or chain endorsement. Describe, measure, cite.
 - **No secrets, no personal data** beyond the roster fields members consent to in `COMMITTEE.md`.

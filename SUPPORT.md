@@ -2,7 +2,7 @@
 
 | Need | Where |
 |---|---|
-| Discuss the competition, propose ideas, ask how to engage | [BGIN Discourse — IKP working group](https://bgin.discourse.group/c/working-group-s/identity-key-management-and-privacy), starting with the [IKP Post-Quantum Cryptography thread](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001) |
+| Discuss the competition, propose ideas, ask how to engage | [BGIN Discourse — Post-Quantum Crypto Agility Competition category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44); the wider PQC arc lives in the [IKP working group](https://bgin.discourse.group/c/working-group-s/ikp-wg/8), starting with the [IKP Post-Quantum Cryptography thread](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001) |
 | Propose a metric, a scheme, a resource; offer a testbed node; nominate a committee member | GitHub issues here, using the templates |
 | Committee, node-host, or entrant coordination that cannot be public (COI disclosures, recusals, node operations, submission logistics) | Private participants' Discourse — invitation from a convener; ask on the public thread or by issue labelled `access` |
 | Something in this repository is wrong or broken | GitHub issue; a pull request is welcome (see `CONTRIBUTING.md`) |

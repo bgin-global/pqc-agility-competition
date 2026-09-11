@@ -4,6 +4,9 @@ All notable changes to this repository are recorded here. The format follows [Ke
 
 ## [Unreleased]
 
+### Changed
+- Public channel named precisely: the *Post-Quantum Crypto Agility Competition* category on the BGIN Discourse (README, GOVERNANCE §7, CONTRIBUTING, SUPPORT, resources); the IKP working-group link in SUPPORT corrected.
+
 ### Notes
 - 2026-09-05: repository created under `mitchuski/pqc-agility-competition` with the full hardening, then transferred the same day into `bgin-global` (history, signatures, rulesets, and settings carried over; teams `pqc-conveners`, `pqc-maintainers`, `pqc-evaluation`, `pqc-testbed` created).
 
