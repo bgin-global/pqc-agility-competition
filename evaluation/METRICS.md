@@ -54,7 +54,7 @@ Comparative evaluation is anchored on **Bitcoin (BTC)** and **Ethereum (ETH)**. 
 3. How to score the **legitimate-owner-versus-attacker race** during a migration window (M-20 and track (a)).
 4. Which **reference CPU class** and which **reference tx mix / block** anchor M-03 to M-09? (Needs a decision record.)
 5. Whether **consensus-layer** (ETH-cons) and **user-level** (BTC-tx, ETH-user) evidence are scored on one rubric or two.
-6. Attack classes from GDC26 — **in-flight** (fast machine), **at-rest** (slow machine against on-chain keys), **exploit manufacture separated from deployment** — which does each metric defend against? Tag rows at W2.
+6. Attack classes from GDC26 — **on-spend** (in flight; needs a fast-clock CRQC during the attack), **at-rest** (any CRQC against on-chain keys), **on-setup** (a universal classical exploit manufactured once by a one-off quantum computation, before any attack) — which does each metric defend against? Tag rows at W2. The taxonomy is that of *Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations* (Babbush et al., PRX Quantum 7, 031001, 2026; https://doi.org/10.1103/j3xf-bw18), the paper the GDC26 scene-setting was built on.
 
 ## Change log
 

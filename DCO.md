@@ -1,6 +1,6 @@
 # Developer Certificate of Origin
 
-Every commit in this repository must carry a `Signed-off-by:` trailer whose name and email match the commit author. The trailer certifies the statement below (DCO 1.1, as used by the Linux Foundation and Trust over IP projects). Add it with `git commit -s`; the repository's `commit-msg` hook adds it for you once you run `scripts/setup-signing.sh`.
+Every commit in this repository must carry a `Signed-off-by:` trailer whose name and email match the commit author. The trailer certifies the statement below (DCO 1.1, as used by the Linux Foundation and many open-source projects). Add it with `git commit -s`; the repository's `commit-msg` hook adds it for you once you run `scripts/setup-signing.sh`.
 
 ```
 Developer Certificate of Origin
