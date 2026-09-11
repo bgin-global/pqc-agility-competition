@@ -12,7 +12,7 @@ This repository is where the collaborative, pre-call work happens:
 4. **Specify the crypto-agility testbed** — servers exercising *pre-existing* signature schemes in Bitcoin- and Ethereum-mappable configurations — see [`testbed/`](testbed/).
 5. **Run the workshop series** (six months, Sep 2026 → Feb 2027) that ratifies 1–4 — see [`workshops/ROADMAP.md`](workshops/ROADMAP.md).
 
-Discussion happens on the [BGIN Discourse](https://bgin.discourse.group). This repository is the **record**: decisions, drafts, source material, and testbed specifications. Nothing here is final until the evaluation committee ratifies it and the host publishes the official call.
+Discussion happens in the public [Post-Quantum Crypto Agility Competition category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) on the BGIN Discourse; the [IKP working group](https://bgin.discourse.group/c/working-group-s/ikp-wg/8) carries the wider PQC arc. This repository is the **record**: decisions, drafts, source material, and testbed specifications. Nothing here is final until the evaluation committee ratifies it and the host publishes the official call.
 
 A small amount of material cannot be published here — uncleared sources, nominations and conflict-of-interest disclosures, drafts under embargo. The *rule* for what is held back, and the gate it passes through to be released, is public: [`docs/CONFIDENTIALITY.md`](docs/CONFIDENTIALITY.md).
 
@@ -102,7 +102,7 @@ Indicative calendar (all dates provisional until confirmed by organizers):
 - **Testbed node host** — a university or neutral lab hosts a BSafe.network evaluation node (contracting later; role separated from judging).
 - **SSR workshop** — shape the 13 Dec 2026 programme; review; speak.
 - **Submit / build** — enter the prize when the official call opens (planned 2027).
-- **Discuss & amplify** — the public [BGIN Discourse](https://bgin.discourse.group) (IKP working group), GDC / Block / CSS-BWS sessions. Participants (committee, advisors, node hosts, entrants) also get a private Discourse space run by the conveners; decisions still land here (`GOVERNANCE.md` §7).
+- **Discuss & amplify** — the public [competition category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) on the BGIN Discourse (and the [IKP working group](https://bgin.discourse.group/c/working-group-s/ikp-wg/8)), GDC / Block / CSS-BWS sessions. Participants (committee, advisors, node hosts, entrants) also get a private Discourse space run by the conveners; decisions still land here (`GOVERNANCE.md` §7).
 
 ## Integrity
 
