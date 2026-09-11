@@ -5,6 +5,7 @@ All notable changes to this repository are recorded here. The format follows [Ke
 ## [Unreleased]
 
 ### Added
+- `docs/AUTORESEARCH.md` and `decisions/0001-open-benchmark-model.md` (proposed): the open-benchmark model for the testbed's calibration tracks and the boundary with the prize evaluation.
 - Resources: the PRX Quantum paper the GDC26 scene-setting was built on (DOI, arXiv, ePrint), the scene-setting deck as hosted on the BGIN website, the Discourse launch / workshop / nominations topics, the roadmap and CoDecFin threads, CoDecFin 2027 as an event; the Block 14 meeting report noted for the resources list.
 - Metric open question 6 carries the on-spend / at-rest / on-setup taxonomy with its source; S-05 and C-05 carry the September 2026 evidence (state-reuse key recovery; lattice zkVM and client-side proving).
 - `outreach/`: launch drafts and the record of what was posted on 2026-09-11.
