@@ -1,7 +1,8 @@
 # Draft — launch topic
 
 **Where:** new topic in *Post-Quantum Crypto Agility Competition* (category 44).
-**Title:** `The PQC Migration Prize: the working repository is open, and three things are open with it`
+**Title:** `The PQC Migration Prize: the working repository is open`
+**Posted:** 2026-09-11 as [topic 1053](https://bgin.discourse.group/t/the-pqc-migration-prize-the-working-repository-is-open/1053). The three *separate topic to follow* lines are edited in place as the topics land (see `outreach/README.md`).
 
 ---
 
@@ -10,15 +11,15 @@ The crypto-agility competition discussed at GDC26 and through the IKP working gr
 **Repository:** https://github.com/bgin-global/pqc-agility-competition
 **Hub:** https://bgin-global.org/projects/pqc-migration
 
-The Japanese Government (METI/NEDO) hosts the competition, publishes the call, sets the rules and awards the prize. BGIN coordinates internationally and runs the neutral evaluation testbed. Between now and the call, the work is public: form the evaluation committee, ratify the outcomes, draft the metrics and rubric, and specify the testbed. Six workshops from late September 2026 to February 2027 carry that work; applications open January 2027 as planned.
+The Japanese Government (METI/NEDO) hosts the competition, publishes the call, sets the rules and awards the prize. BGIN coordinates internationally and runs the neutral evaluation testbed. Between now and the call, the work is public: form the evaluation committee, ratify the outcomes, draft the metrics and rubric, and specify the testbed. Six workshops from late September 2026 to February 2027 carry that work ([Workshop series W1–W6](https://bgin.discourse.group/t/workshop-series-w1-w6-sep-2026-feb-2027/1054)); applications open January 2027 as planned.
 
 The repository holds all of it in draft: `GOVERNANCE.md`, `OUTCOMES.md` (O1–O6), `evaluation/METRICS.md` (22 candidate metrics), `evaluation/RUBRIC.md`, `testbed/SCHEMES.md` and `testbed/HARNESS.md`, and `workshops/ROADMAP.md`. Every document is marked `draft v0`. None of it is settled; that is the point of publishing it now rather than after.
 
 ### Three ways to take part
 
-1. **Nominate someone for the evaluation committee** — including yourself. Composition is a draft table ratified at W1. Separate topic to follow.
-2. **Propose or challenge a metric, or argue a scheme scope ruling.** The metric register carries 22 candidates and six open questions; the scheme table carries six integration paths (`C-01`–`C-06`) that are explicitly rulings, not defaults. Separate topic to follow.
-3. **Offer a testbed node.** Geographic distribution is what makes the evidence neutral, and the node call is a W3 output. Separate topic to follow.
+1. **Nominate someone for the evaluation committee** — including yourself. Composition is a draft table ratified at W1. Topic: [Evaluation committee: nominations are open](https://bgin.discourse.group/t/evaluation-committee-nominations-are-open/1055).
+2. **Propose or challenge a metric, or argue a scheme scope ruling.** The metric register carries 22 candidates and six open questions; the scheme table carries six integration paths (`C-01`–`C-06`) that are explicitly rulings, not defaults. Topic to follow in the week of 14 September.
+3. **Offer a testbed node.** Geographic distribution is what makes the evidence neutral, and the node call is a W3 output. Topic to follow in the week of 14 September.
 
 Each of the three has a GitHub issue template. A post here is fine too; the repository is where it ends up either way.
 
