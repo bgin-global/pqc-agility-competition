@@ -27,9 +27,17 @@ Carried from the IKP-WG discussion, all assigned at W2:
 3. How is the legitimate-owner-versus-attacker race scored during a migration window?
 4. Which reference CPU class, and which reference transaction mix or block, anchor the cost metrics?
 5. Are consensus-layer and user-level evidence scored on one rubric or two?
-6. Which of the GDC26 attack classes does each metric defend against — in-flight, at-rest against on-chain keys, or exploit manufacture separated from deployment?
+6. Which of the GDC26 attack classes does each metric defend against — on-spend (in flight), at-rest against on-chain keys, or on-setup (a universal exploit manufactured once, before any attack)? The taxonomy is the one in *Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations* (PRX Quantum 7, 031001, https://doi.org/10.1103/j3xf-bw18), which the GDC26 scene-setting was built on.
 
 Question 4 in particular is a decision somebody has to make concretely, and it will be made better with implementers in the thread than without.
+
+### Three September releases that bear on the rulings
+
+Named on the 10 September IKP call; each lands on a specific row rather than on the debate in general.
+
+- **Project Eleven — [key recovery from state reuse](https://www.projecteleven.com/blog/key-recovery-from-state-reuse).** Stateful hash-based signatures (XMSS/XMSS^MT, LMS/HSS — `S-04`, `S-05`) carry an operational failure mode, not only a cryptographic one: sign twice from one state and the key is exposed. The scheme rows already flag state management as the operational risk; this is the demonstrated failure behind that flag, and the Poseidon2-XMSS ruling inherits it.
+- **a16z crypto — [Lattice Jolt](https://a16zcrypto.com/posts/article/lattice-snarks-jolt-post-quantum-faster/).** A post-quantum zkVM on a Module-SIS lattice commitment (the ML-DSA / ML-KEM assumption family), proofs under 100 KB. `C-05` ZK-wrapped verification and `M-16` stop being hypothetical and become measurable.
+- **[ProveKit](https://provekit.org/)** (World, Atheon, Reilabs, Nethermind). Client-side proving on the phones people own — seconds on recent hardware, under 30 s on a 2 GB Android. Bears on wallet-side verification cost and on where the user-level (`ETH-user`) burden actually falls.
 
 ### Anchoring
 

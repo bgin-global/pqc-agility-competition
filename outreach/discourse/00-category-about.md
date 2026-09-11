@@ -27,4 +27,4 @@ Threat-narrative debate about a single "Q-day" date, and proposals for new PQC p
 
 ### The record
 
-Discussion happens here. The record is the repository: **https://github.com/bgin-global/pqc-agility-competition** — governance, outcomes, the metric register, the rubric, the testbed specification, the workshop roadmap and every decision record. Everything in it is `draft v0` until the evaluation committee ratifies it and the host publishes the official call. Nothing decided in a post is decided until it is in the repository.
+Discussion happens here. The record is the repository: **https://github.com/bgin-global/pqc-agility-competition** — governance, outcomes, the metric register, the rubric, the testbed specification, the workshop roadmap and every decision record. The public face is the project hub on the BGIN website: https://bgin-global.org/projects/pqc-migration. Everything in it is `draft v0` until the evaluation committee ratifies it and the host publishes the official call. Nothing decided in a post is decided until it is in the repository.

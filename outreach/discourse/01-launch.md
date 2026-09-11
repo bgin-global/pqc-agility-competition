@@ -5,9 +5,10 @@
 
 ---
 
-The crypto-agility competition discussed at GDC26 and through the IKP working group now has a category here and a working repository.
+The crypto-agility competition discussed at GDC26 and through the IKP working group now has a category here, a working repository, and a hub on the BGIN website.
 
 **Repository:** https://github.com/bgin-global/pqc-agility-competition
+**Hub:** https://bgin-global.org/projects/pqc-migration
 
 The Japanese Government (METI/NEDO) hosts the competition, publishes the call, sets the rules and awards the prize. BGIN coordinates internationally and runs the neutral evaluation testbed. Between now and the call, the work is public: form the evaluation committee, ratify the outcomes, draft the metrics and rubric, and specify the testbed. Six workshops from late September 2026 to February 2027 carry that work; applications open January 2027 as planned.
 
@@ -21,6 +22,8 @@ The repository holds all of it in draft: `GOVERNANCE.md`, `OUTCOMES.md` (O1–O6
 
 Each of the three has a GitHub issue template. A post here is fine too; the repository is where it ends up either way.
 
+One more, asked plainly: the repository's rule is that nothing merges without a review from a convener who is not the author, and there is no administrator bypass. With one convener seated, the record cannot move. A **second convener with a signing key** is the first seat to fill, and it is asked for here before anything else is.
+
 ### Two things stated plainly
 
 **Dates disagree, and both are carried.** The July community briefing targets winner selection for mid-September 2028; the GDC26 meeting report says March 2029. Both are provisional and the host's call text settles it. The repository carries both, attributed, rather than picking one.
@@ -32,3 +35,4 @@ Each of the three has a GitHub issue template. A post here is fine too; the repo
 - GDC26 meeting report — [Post-Quantum Cryptography Migration on DLTs](https://bgin-global.org/news/260903-gdc26-pqc-migration) (3 Sep 2026), and its [thread here](https://bgin.discourse.group/t/gdc26-meeting-report-published-post-quantum-cryptography-migration-on-dlts/1045).
 - METI/NEDO community briefing (July 2026) — in the repository at `resources/`, with a plain-text digest.
 - [IKP Post Quantum Cryptography thread 06/26](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001).
+- The resource estimates and attack classes the GDC26 room used — *Securing Elliptic Curve Cryptocurrencies against Quantum Vulnerabilities: Resource Estimates and Mitigations*, PRX Quantum 7, 031001 (21 Aug 2026), open access: https://doi.org/10.1103/j3xf-bw18.
