@@ -12,7 +12,14 @@ A post here is a draft until a convener posts it. When it is posted, the row bel
 | `discourse/03-metrics-and-schemes.md` | Call for comment on the metric register and scheme scope | — |
 | `discourse/04-testbed-nodes.md` | Call for testbed node hosts | — |
 | `discourse/05-workshops.md` | Workshop series W1–W6 and the calendar | — |
-| `discourse/06-crosspost-ikp-thread.md` | Short reply on the existing IKP PQC thread ([1001](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001)) and the GDC26 report thread ([1045](https://bgin.discourse.group/t/gdc26-meeting-report-published-post-quantum-cryptography-migration-on-dlts/1045)) pointing at the new category | — |
+| `discourse/06-crosspost-ikp-thread.md` | Short replies on the existing IKP PQC thread ([1001](https://bgin.discourse.group/t/ikp-post-quantum-cryptography-thread-06-26/1001)) and the GDC26 report thread ([1045](https://bgin.discourse.group/t/gdc26-meeting-report-published-post-quantum-cryptography-migration-on-dlts/1045)) pointing at the new category | — |
+
+## Posting order
+
+1. `00` — edit the About topic (the first paragraph is the category blurb).
+2. `01` launch → `05` workshops (pin) → `02` nominations → `03` metrics → `04` testbed. Then edit `01` to link the four topics where it says *separate topic to follow*.
+3. `06` A and B on the existing threads; `06` C only once the scene-setting deck is cleared for the website (or with the paper paragraph alone).
+4. Fill the *Posted* column above; the website hub's document row and the repository's `SUPPORT.md` already point at the category.
 
 ## House style
 

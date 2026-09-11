@@ -32,4 +32,6 @@ That is the general shape: **decisions are published, deliberation is not.** A s
 
 ### Conveners
 
-Conveners are named on ratification at W1. That is one of the things W1 is for.
+Conveners are named on ratification at W1. That is one of the things W1 is for. Before W1, one seat is needed immediately: a **second convener with a signing key**, because the repository's review rule (a code-owner approval that is not the author's, no bypass) means a single convener cannot merge anything — including the committee's own nominations. Setup is `docs/SIGNING.md` §1–3; it takes an afternoon.
+
+Names for the two track leads — theoretical security, implementation and performance — are the next ask, and nominations for them are read first.
