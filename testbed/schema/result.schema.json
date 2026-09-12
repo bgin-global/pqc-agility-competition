@@ -1,54 +1,219 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://bgin-global.org/pqc-agility-competition/testbed/result.schema.json",
-  "title": "Testbed run result (draft v0)",
+  "title": "Testbed run result (draft v0; runner/draw/track fields proposed)",
   "type": "object",
-  "required": ["run_id", "manifest", "measurements", "attestation"],
+  "required": [
+    "run_id",
+    "manifest",
+    "measurements",
+    "attestation"
+  ],
   "properties": {
-    "run_id": { "type": "string" },
+    "run_id": {
+      "type": "string"
+    },
     "manifest": {
       "type": "object",
-      "required": ["scheme_id", "param_set", "implementation", "harness_version", "node", "fixtures", "started_at", "finished_at"],
+      "required": [
+        "scheme_id",
+        "param_set",
+        "implementation",
+        "harness_version",
+        "node",
+        "fixtures",
+        "started_at",
+        "finished_at"
+      ],
       "properties": {
-        "scheme_id": { "type": "string", "pattern": "^[SBC]-[0-9]{2}$" },
-        "param_set": { "type": "string" },
+        "scheme_id": {
+          "type": "string",
+          "pattern": "^[SBC]-[0-9]{2}$"
+        },
+        "param_set": {
+          "type": "string"
+        },
         "implementation": {
           "type": "object",
-          "required": ["name", "repo", "commit", "build_flags"],
+          "required": [
+            "name",
+            "repo",
+            "commit",
+            "build_flags"
+          ],
           "properties": {
-            "name": { "type": "string" },
-            "repo": { "type": "string" },
-            "commit": { "type": "string" },
-            "build_flags": { "type": "string" },
-            "compiler": { "type": "string" },
-            "version": { "type": "string" }
+            "name": {
+              "type": "string"
+            },
+            "repo": {
+              "type": "string"
+            },
+            "commit": {
+              "type": "string"
+            },
+            "build_flags": {
+              "type": "string"
+            },
+            "compiler": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
           }
         },
-        "harness_version": { "type": "string" },
+        "harness_version": {
+          "type": "string"
+        },
         "node": {
           "type": "object",
-          "required": ["id", "host_org", "region", "hw_fingerprint", "os_image_digest", "container_digest"],
+          "required": [
+            "id",
+            "host_org",
+            "region",
+            "hw_fingerprint",
+            "os_image_digest",
+            "container_digest"
+          ],
           "properties": {
-            "id": { "type": "string" },
-            "host_org": { "type": "string" },
-            "region": { "type": "string" },
-            "hw_fingerprint": { "type": "string" },
-            "os_image_digest": { "type": "string" },
-            "container_digest": { "type": "string" }
+            "id": {
+              "type": "string"
+            },
+            "host_org": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "hw_fingerprint": {
+              "type": "string"
+            },
+            "os_image_digest": {
+              "type": "string"
+            },
+            "container_digest": {
+              "type": "string"
+            }
           }
         },
         "fixtures": {
           "type": "object",
-          "required": ["corpus_id", "key_set_id"],
+          "required": [
+            "corpus_id",
+            "key_set_id"
+          ],
           "properties": {
-            "corpus_id": { "type": "string" },
-            "key_set_id": { "type": "string" },
-            "block_mix_id": { "type": "string" },
-            "legacy_corpus_id": { "type": "string" }
+            "corpus_id": {
+              "type": "string"
+            },
+            "key_set_id": {
+              "type": "string"
+            },
+            "block_mix_id": {
+              "type": "string"
+            },
+            "legacy_corpus_id": {
+              "type": "string"
+            }
           }
         },
-        "started_at": { "type": "string", "format": "date-time" },
-        "finished_at": { "type": "string", "format": "date-time" }
+        "started_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "finished_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "runner": {
+          "type": "object",
+          "description": "The runner the scalar is valid on (proposed, decisions/0001); must match the track's runner.json",
+          "required": [
+            "cpu_model",
+            "threads",
+            "sandbox_kind",
+            "sandbox_digest"
+          ],
+          "properties": {
+            "cpu_class": {
+              "type": "string"
+            },
+            "cpu_model": {
+              "type": "string"
+            },
+            "isa_flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "threads": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "frequency_policy": {
+              "type": "string"
+            },
+            "memory_cap_bytes": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "wall_clock_cap_s": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sandbox_kind": {
+              "type": "string"
+            },
+            "sandbox_digest": {
+              "type": "string"
+            },
+            "network": {
+              "type": "boolean",
+              "const": false
+            }
+          }
+        },
+        "draw": {
+          "type": "object",
+          "description": "The hold-apart draw (proposed, decisions/0001): seed = SHA-256(h_fixtures || h_submission || salt_round)",
+          "required": [
+            "h_fixtures",
+            "h_submission",
+            "salt_round_commitment",
+            "seed"
+          ],
+          "properties": {
+            "h_fixtures": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "h_submission": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "salt_round_commitment": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "salt_round": {
+              "type": "string",
+              "description": "revealed with the results; absent while the round is open"
+            },
+            "seed": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "track": {
+          "type": "string",
+          "description": "calibration track id (e.g. T1-verify-single); absent for a Phase B measurement"
+        },
+        "scalar": {
+          "type": "number",
+          "description": "the track's scalar as computed by the trusted scorer; absent for a Phase B measurement"
+        }
       }
     },
     "measurements": {
@@ -56,32 +221,68 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["metric_id", "value", "unit", "n"],
+        "required": [
+          "metric_id",
+          "value",
+          "unit",
+          "n"
+        ],
         "properties": {
-          "metric_id": { "type": "string", "pattern": "^M-[0-9]{2}$" },
-          "value": { "type": "number" },
-          "unit": { "type": "string" },
-          "n": { "type": "integer", "minimum": 1 },
+          "metric_id": {
+            "type": "string",
+            "pattern": "^M-[0-9]{2}$"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "n": {
+            "type": "integer",
+            "minimum": 1
+          },
           "stats": {
             "type": "object",
             "properties": {
-              "min": { "type": "number" },
-              "median": { "type": "number" },
-              "p99": { "type": "number" },
-              "max": { "type": "number" }
+              "min": {
+                "type": "number"
+              },
+              "median": {
+                "type": "number"
+              },
+              "p99": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              }
             }
           },
-          "params": { "type": "object", "description": "scenario parameters, e.g. {\"n_signers\": 1024}" }
+          "params": {
+            "type": "object",
+            "description": "scenario parameters, e.g. {\"n_signers\": 1024}"
+          }
         }
       }
     },
     "attestation": {
       "type": "object",
-      "required": ["operator_key_id", "signature", "canonical_hash"],
+      "required": [
+        "operator_key_id",
+        "signature",
+        "canonical_hash"
+      ],
       "properties": {
-        "operator_key_id": { "type": "string" },
-        "signature": { "type": "string" },
-        "canonical_hash": { "type": "string" }
+        "operator_key_id": {
+          "type": "string"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "canonical_hash": {
+          "type": "string"
+        }
       }
     }
   }

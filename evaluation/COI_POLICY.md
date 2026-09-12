@@ -36,6 +36,13 @@ Disclosures are summarized in `COMMITTEE.md`; the full form is held by the conve
 - BGIN coordination staff do not score.
 - Funding for nodes is disclosed per node in `testbed/README.md`.
 
+## Measurement seat and attribution (proposed, decisions/0001)
+
+- **Node hosts are not submitters on the tracks they measure.** A host with an interest in a scheme, a vendor, or a submitter measures a different track; the interest is disclosed on the form above and the recusal is published.
+- **Submitters are not judges.** A submitter to a calibration track does not sit on the review of that track's promotions in the round in which they submitted.
+- **Agent attribution is mandatory.** Every submission note names the exact underlying model, the harness, and the effort level, or states "none". Where a platform's bot authors a thread or a note, the attribution is carried in the body. Conveners with an interest in an autoresearch harness or platform disclose it before any vote that concerns the benchmark model.
+- **Calibration results are not judgements.** No calibration-track result is cited as an evaluation of any applicant, and no prize entry is promoted into another.
+
 ## Publication
 
 Disclosure summaries, recusals, and mitigations are published with the evaluation record unless the host requires otherwise.

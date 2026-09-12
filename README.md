@@ -56,6 +56,7 @@ testbed/README.md         BSafe.network-concept testbed: nodes, hosts, phases, r
 testbed/SCHEMES.md        register of pre-existing signature schemes and classical baselines
 testbed/HARNESS.md        common bench interface, run manifest, reproduction protocol
 testbed/schema/           JSON schema for a testbed run result
+testbed/tracks/           calibration-track contracts (proposed): manifest, rules, runner, fixtures, note template; T1 drafted
 workshops/ROADMAP.md      six-month workshop series W1–W6 with target outputs
 workshops/TEMPLATE.md     workshop record template
 decisions/                ADR-style decision records (0001 = open-benchmark model, proposed)

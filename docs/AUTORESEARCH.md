@@ -38,7 +38,7 @@ The boundary is carried by three things: the naming (calibration tracks are neve
 
 | Benchmark element | Testbed counterpart | Notes |
 |---|---|---|
-| `benchmark.json` (`name`, `category`, `direction`, `editablePaths`, `setupCommand`, `benchmarkCommand`, `scorePath`, `minScoreImprovementBips`, `maxSubmissionBytes`, `runner`) | `testbed/tracks/<track>/benchmark.json` | one manifest per track; the schema-v2 form (one repository, several tracks with non-overlapping editable paths) fits the S-nn / C-nn layout |
+| `benchmark.json` (`name`, `category`, `direction`, `editablePaths`, `setupCommand`, `benchmarkCommand`, `scorePath`, `minScoreImprovementBips`, `maxSubmissionBytes`, `runner`) | [`testbed/tracks/<track>/benchmark.json`](../testbed/tracks/README.md) — T1 drafted | one manifest per track; the schema-v2 form (one repository, several tracks with non-overlapping editable paths) fits the S-nn / C-nn layout |
 | `editablePaths` | the scheme backend directory for that track (`backends/<scheme>/`) | the harness, fixtures, scorer, and every other backend are fixed; edits outside are discarded at validation |
 | `setupCommand` / `benchmarkCommand` | the harness CLI (`harness setup`, `harness run --track <t>`) | pinned toolchain; no network during the run |
 | `score.json` | the track's scalar, computed by the trusted scorer from the `measurements[]` of a schema-valid result (`testbed/schema/result.schema.json`) | the result document is the evidence; the scalar is the frontier. Both are published |
@@ -63,7 +63,29 @@ Untrusted build, trusted measure. The pattern is the one the community benchmark
 - Parameters live in the run manifest, never in the environment: a sandbox strips environment variables, and a knob set by `export` is a knob that was not measured.
 - Builds are pinned (repository, commit, build flags, compiler, container digest) and the manifest is hashed into the result before the run starts.
 
-The schema already carries `attestation`, `node.container_digest`, `node.os_image_digest`, and `implementation.commit`; the addition is a `runner` object (CPU model, thread count, caps, sandbox digest) so that "reference CPU class" is a checkable field rather than a phrase.
+The schema already carries `attestation`, `node.container_digest`, `node.os_image_digest`, and `implementation.commit`; `manifest.runner` (CPU model and class, thread count, caps, sandbox kind and digest) and `manifest.draw` (`h_fixtures`, `h_submission`, `salt_round_commitment`, `seed`) are added so that "reference CPU class" and "the draw" are checkable fields rather than phrases.
+
+## 5b. Proposers and provers: the dual-agent structure of the testbed
+
+The testbed has two seats by construction, and they are the two seats of a dual-agent harness. The **proposer** is the submitter: an implementation of a signature scheme, or a crypto-agility mechanism — a switch, a hybrid, a staged migration — offered for measurement. The **prover** is the node: it runs the proposal under the harness and signs what it measured. Neither may do the other's job, and the value of the evidence is the separation between them. Stated as a loop:
+
+| Harness seat | Testbed role | What it may touch |
+|---|---|---|
+| **Measure** | the trusted scorer on a node reads the baseline (`B-nn`) on its own hardware | fixtures, baseline, runner spec |
+| **Propose** | the submitter commits an archive of the editable paths and a public note | its own editable paths only |
+| **Hold-apart** (the Gap) | the fixture draw is derived from the proposal's digest and a round secret the proposer never sees | nothing — it holds only the axioms: the manifest, the fixture bank, the schema |
+| **Assay** | k nodes in two regions execute the drawn instances inside the sandbox and sign canonical results | the sandbox output; never the proposal's source at scoring time |
+| **Critic** | the committee's track (a) review reads the promoted diff: one lever, transferable or artifact, where the binding cost moved | the record |
+| **Chronicle** | `promoted/` and the workshop record | the record |
+
+Four properties follow that a plain leaderboard does not have.
+
+1. **Overfitting is impossible by construction, not by rule.** Because `seed = SHA-256(h_fixtures ‖ h_submission ‖ salt_round)`, the submitter commits before knowing which instances are timed; there is nothing to tune to. The anti-fingerprinting rule in `RULES.md` remains as a statement of intent, but the draw is what enforces it. This is the same mechanism the dual-agent harness uses for its verification witnesses: the check an agent invents is the check its work was built to survive, so the check is drawn from a hash the agent cannot grind.
+2. **"What you prove alone is a candidate; only what another signs beside you is real."** Promotion requires k independent attestations over the same canonical draw. A submitter's own claimed score (T0) is a candidate; the reference run exists only when nodes that share nothing with the submitter but the axioms have signed it. The multiplicative gate applies: any failed gate on any node is a failed promotion, not a partial pass.
+3. **Strangers can meet.** A new solver and a new node have to agree on nothing but the manifest, the fixture bank, and the schema — the shared root is the axioms and no more. That is what makes the testbed extensible to a chain community that has not participated before, and what makes a self-hosted validator equivalent to a testbed node.
+4. **Crypto-agility is tested against an unpredictable switch.** For the agility tracks (T3, T4) the Gap draws the *scenario* — which scheme pair, when the switch or rollback triggers, which legacy signatures must still verify — from the same seed. A mechanism that only works for the switch its author rehearsed is exactly what agility is not; a draw the author cannot predict is the honest test of it.
+
+The dual-agent harness this borrows from is public ([`mitchuski/agentprivacy-harness`](https://github.com/mitchuski/agentprivacy-harness): a Measure → Propose → Hold-apart → Assay → Critic → Chronicle loop with a hash-drawn witness gate, a multiplicative gate, and a claim register that refuses claims stronger than their enforcement). It is one of the conveners' lanes and is disclosed as such under the COI policy; the testbed adopts the *shape* — commitment before draw, independent signatures, shared root of axioms only — not the software.
 
 ## 6. Rules that carry into `RULES.md` (calibration tracks)
 
@@ -127,7 +149,7 @@ The same loop the tracks run is proposed as the committee's method for the metri
 | Workshop | This plan's item |
 |---|---|
 | W2 (mid Oct, Block 15) | rule on the model (`decisions/0001`); rule on the unit of submission framing; choose T1; the attribution rule |
-| W3 (Nov) | adopt `testbed/tracks/T1/` (manifest, RULES, fixtures, runner spec); the node call includes the sandbox contract; first T0 runs |
+| W3 (Nov) | open [`testbed/tracks/T1-verify-single/`](../testbed/tracks/T1-verify-single/RULES.md) (manifest, RULES, fixtures, runner spec drafted now); the node call includes the sandbox contract; first T0 runs |
 | W4 (Dec, SSR) | T1 results feed the tolerance band and the latency dimension weights; call-text package states how entries will be measured |
 | W5 (Jan 2027, pilot) | first promotions reproduced on 3–5 nodes in 2 regions; T2 opens |
 | W6 (Feb 2027) | retrospective: does the model carry into Phase B under the host's rules; T3/T4 scoping |

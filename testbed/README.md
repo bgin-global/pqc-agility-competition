@@ -19,7 +19,7 @@
 
 | Phase | Window | Nodes | Purpose |
 |---|---|---|---|
-| T0 — Spec | Sep to Nov 2026 | none | Harness interface, result schema, node requirements, reproduction protocol (this directory) |
+| T0 — Spec | Sep to Nov 2026 | none (a hosted development runner for pre-flight only) | Harness interface, result schema, node requirements, reproduction protocol (this directory); calibration-track contracts under [`tracks/`](tracks/README.md) *(proposed)* |
 | T1 — Pilot | Jan to Sep 2027 | 3–5 volunteer | Reproduce reference runs for baseline + in-scope schemes; calibrate tolerance; validate node protocol |
 | T2 — Evaluation | Nov 2027 to mid 2028 | 10–15 contracted | Multi-month runs of submitted artifacts |
 
