@@ -15,8 +15,8 @@ The dual-agent harness instance for the testbed's calibration tracks (T1 `verify
 ## State
 
 - `frontier.json` — **baseline unmeasured** (OT-1). Conformance fails on exactly that, by design; `scripts/ci/check-harness.sh` reports it and enforces conformance once a baseline is recorded.
-- `runs/smoke/` — the stub round on record; `verify_run` passes (every seed re-derives).
-- `notes/UPSTREAM_DEFECTS.md` — two engine defects found on the first round, reported upstream; T1 does not open on a biased draw.
+- `runs/smoke/` and `runs/smoke-v2/` — the stub rounds on record; `verify_run` passes on both (the first replays as draw v1, the second as v2).
+- `notes/UPSTREAM_DEFECTS.md` — two engine defects found on the first round and fixed upstream the same day (`ea25f42`); `runs/smoke/` is the v1 record (biased draw), `runs/smoke-v2/` the v2 record (whole bank reached).
 - `claims_register.md` — C-PQC-1 (the draw makes fixture overfitting impossible by construction: **argued**, enforced by nothing yet) and C-PQC-2 (promotion = k attestations over one draw: **specified**).
 
 ## Conformance checks specific to this instance

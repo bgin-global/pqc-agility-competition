@@ -1,0 +1,10 @@
+{
+  "leverId": "stub-verify-batch-reuse",
+  "status": "MIRAGE",
+  "metric": 0,
+  "gateResult": "0/0",
+  "failingCheck": "stub: no model held the prover's seat, so no gate was actually answered",
+  "evidence": "stub verdict — deterministic, folds nothing",
+  "scratchDir": "",
+  "leverIdMismatch": "unknown"
+}

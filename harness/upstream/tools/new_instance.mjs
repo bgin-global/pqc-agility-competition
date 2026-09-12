@@ -10,7 +10,7 @@
 // It never overwrites. Re-running on an existing instance reports what is
 // already there and leaves it alone.
 
-import { mkdirSync, existsSync, copyFileSync, writeFileSync, readFileSync } from 'node:fs'
+import { mkdirSync, existsSync, copyFileSync, writeFileSync, readFileSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join, resolve, basename } from 'node:path'
 
@@ -18,11 +18,31 @@ const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..')
 const T = join(root, 'templates')
 
-const [dirArg, nameArg] = process.argv.slice(2)
-if (!dirArg) {
-  console.error('usage: node tools/new_instance.mjs <dir> [name]')
-  console.error('  e.g. node tools/new_instance.mjs ../my-harness shrink-the-binary')
+// --prover <model>: seat the prover on a different model than the proposer, so
+// the pair is cross-model from the first round (conform.mjs D4b advisory:
+// same-model pairs have Φ_inference ≈ 0 — the prover shares the proposer's
+// blind spots). One flag here beats a config edit nobody makes.
+const argv = process.argv.slice(2)
+const values = {}, positional = []
+for (let i = 0; i < argv.length; i++) {
+  const a = argv[i]
+  if (['--prover', '--source'].includes(a)) {
+    if (!argv[i + 1] || argv[i + 1].startsWith('--') || values[a]) {
+      console.error('missing or duplicate value for ' + a); process.exit(1)
+    }
+    values[a] = argv[++i]
+  } else if (a.startsWith('--')) { console.error('unknown option: ' + a); process.exit(1) }
+  else positional.push(a)
+}
+const [dirArg, nameArg] = positional
+const prover = values['--prover'] || null
+const source = values['--source'] ? resolve(values['--source']) : null
+if (!dirArg || positional.length > 2) {
+  console.error('usage: node tools/new_instance.mjs <dir> [name] [--prover <model>] [--source <research-directory>]')
   process.exit(1)
+}
+if (source && (!existsSync(source) || !statSync(source).isDirectory())) {
+  console.error('--source must name an existing local directory'); process.exit(1)
 }
 const dest = resolve(dirArg)
 const name = nameArg || basename(dest)
@@ -54,9 +74,32 @@ for (const g of ['runs/.gitkeep', 'chronicles/.gitkeep']) {
 // Give the config its name so the very first edit is a real one, not a rename.
 const cfgPath = join(dest, 'harness.config.mjs')
 const cfg = readFileSync(cfgPath, 'utf8')
-if (cfg.includes("name: 'TODO-my-harness'")) {
-  writeFileSync(cfgPath, cfg.replace("name: 'TODO-my-harness'", `name: ${JSON.stringify(name)}`))
+let cfgOut = cfg
+if (cfgOut.includes("name: 'TODO-my-harness'")) {
+  cfgOut = cfgOut.replace("name: 'TODO-my-harness'", `name: ${JSON.stringify(name)}`)
 }
+// Seat the prover model right under the door line; conform.mjs reads
+// config.seatOpts.assay.model and drops the D4b advisory when it differs.
+const doorLine = "door: 'first-person', // T6 — leave exactly as is; conform.mjs checks the literal"
+if (prover && cfgOut.includes(doorLine) && !cfgOut.includes('seatOpts:')) {
+  cfgOut = cfgOut.replace(doorLine, doorLine + `\n\n  // The prover's model (D4b). The proposer runs on the caller's default; the\n  // prover must not. Set by new_instance.mjs --prover.\n  seatOpts: { assay: { model: ${JSON.stringify(prover)} } },`)
+}
+if (made.includes('harness.config.mjs') && cfgOut !== cfg) writeFileSync(cfgPath, cfgOut)
+
+const connectionPath = join(dest, 'connection.local.json')
+if (!existsSync(connectionPath)) {
+  writeFileSync(connectionPath, JSON.stringify({
+    version: 1, state: 'draft', harnessRoot: resolve(root), instanceRoot: dest,
+    researchRoot: source, revision: null, purpose: null, allowedInputs: [],
+    scratchRoot: join(dest, 'runs'), runtime: null,
+    authorization: { execution: null, providerDisclosure: null, budget: null },
+    note: 'Planning record only; not a sandbox or permission grant. The runner does not read source files from this record. Configure explicit inputs and checks before running.'
+  }, null, 2) + '\n')
+  made.push('connection.local.json')
+}
+const ignorePath = join(dest, '.gitignore')
+const ignore = existsSync(ignorePath) ? readFileSync(ignorePath, 'utf8') : ''
+if (!ignore.split(/\r?\n/).includes('connection.local.json')) writeFileSync(ignorePath, ignore + (ignore && !ignore.endsWith('\n') ? '\n' : '') + 'connection.local.json\n')
 
 const rel = (p) => join(dirArg, p).replace(/\\/g, '/')
 
@@ -66,7 +109,8 @@ if (kept.length) console.log('  kept (already present): ' + kept.join(', '))
 
 console.log(`
 It does NOT conform yet, and it should not. Three things are missing, and each
-one is a decision only you can make:
+one must be grounded in the user's purpose and existing authorization.
+Read ENTRY.md; connection.local.json records source and scope without granting permissions:
 
   1. THE GAP — before anything else. Say how held-out witnesses derive from a
      proposal by hashing it. If you cannot, you do not have a harness yet; you
