@@ -54,6 +54,8 @@ jobs:
             if [ ! -e "$dir/$target" ] && [ ! -e "$target" ]; then echo "::error file=$file::broken link $link"; fail=1; fi
           done < <(grep -o -H -E '\]\(([^)#:]+)(#[^)]*)?\)' --include='*.md' -r . | sed -E 's/\]\((.*)\)$/\1/' | sed -E 's/^\.\///')
           exit $fail
+      - name: Calibration harness — pin, upstream gates, instance
+        run: bash scripts/ci/check-harness.sh
       - name: Hooks and scripts are executable and shell-clean
         run: |
           for f in .githooks/* scripts/*.sh scripts/ci/*.sh; do bash -n "$f" && echo "syntax ok $f"; done
