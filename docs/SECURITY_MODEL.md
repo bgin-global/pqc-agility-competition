@@ -28,7 +28,7 @@ This repository is the record of a competition whose rubric and evidence are mea
 | DCO sign-off | `web_commit_signoff_required`, client `commit-msg` hook, and CI job `dco` that also matches the sign-off to the author |
 | CLA | None; the DCO carries the certification unless BGIN adopts a CLA |
 | Cryptographic signatures | **Required on every branch and tag**, no bypass |
-| `main` | PR with 1 approval + code owners + last-push approval + threads resolved + 3 required checks + linear history; no force-push, no deletion |
+| `main` | PR-only, threads resolved, 3 required checks (dco, signatures, validate), linear history; no force-push, no deletion. Merged by **fast-forward push of the signed head** (`CONTRIBUTING.md`), never the squash or rebase buttons. Approvals: **0 while a single convener is seated** (2026-09-13); the intended posture is 1 approval from a code owner who is not the author, with last-push approval — restore it in `main.json` when the second convener holds a signing key |
 | Org ruleset | "no creations" (repository create / delete / transfer blocked) — recommended for `bgin-global`, section 5; not available on the organization's current plan |
 | Actions | SHA-pinned, `permissions: contents: read`, Dependabot weekly |
 | Bypass | none |

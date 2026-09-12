@@ -31,6 +31,16 @@ This repository is the record; the BGIN Discourse is the conversation. Most cont
 
 - One topic per PR. Keep drafts marked `draft vN` in the file header until ratified.
 - Reference the Discourse thread and the issue.
+
+## How a pull request lands
+
+When the three checks are green, a maintainer fast-forwards `main` to the signed head from a clean checkout:
+
+```bash
+git fetch origin && git push origin <branch>:main
+```
+
+GitHub marks the pull request merged. **Never use the squash or rebase buttons**: a squash produces a commit authored by GitHub, signed with GitHub's key rather than a registered signer's, and without the sign-off trailer — the repository's own `scripts/verify-history.sh` rejects it; a rebase merge cannot be signed by GitHub at all. The fast-forward keeps every commit exactly as its author signed it, which is the point of the whole model.
 - Reviewers: at least one convener for governance and scope files; at least one member of the relevant seat for metrics, schemes, and harness changes.
 
 ## License

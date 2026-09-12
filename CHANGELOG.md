@@ -14,6 +14,8 @@ All notable changes to this repository are recorded here. The format follows [Ke
 - `docs/CONFIDENTIALITY.md`: the public rule for what is held and how it is released.
 
 ### Changed
+- 2026-09-13: `main` ruleset — required approving reviews 1 → 0, code-owner review and last-push approval off while a single convener is seated; PR-only, signatures, DCO, linear history and the three checks unchanged; squash merges disallowed in the ruleset and the repository settings. Restore the approval posture when the second convener is seated.
+- 2026-09-13: the first four merges (#4–#7) were made with GitHub's squash button and produced commits signed by GitHub's key, authored under the account display name, three without a sign-off — which the repository's own history check rejects. `main` was rebuilt the same hour from the pull requests' signed heads (16 commits, identical tree, `verify-history` clean) by a one-time force-push under a temporarily lifted no-force-push rule, restored immediately after. Merges are fast-forward pushes of the signed head from now on (`CONTRIBUTING.md`).
 - README status names the open public channel and the hub; the calendar carries the Block 15 venue and sessions and CoDecFin 2027.
 - The Trust over IP framing is dropped from README, DCO, the security model, the rulesets note and dependabot; the controls stand on their own.
 - Public channel named precisely: the *Post-Quantum Crypto Agility Competition* category on the BGIN Discourse (README, GOVERNANCE §7, CONTRIBUTING, SUPPORT, resources); the IKP working-group link in SUPPORT corrected.
