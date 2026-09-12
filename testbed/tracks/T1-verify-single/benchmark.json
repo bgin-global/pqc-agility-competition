@@ -1,0 +1,45 @@
+{
+  "$comment": "DRAFT v0 — proposed track manifest, not open. Opens only by decision record (0001 model; 0002 k and tolerance). Field names follow the open-benchmark manifests in use by the community benchmarks (see docs/AUTORESEARCH.md §4) so existing solver tooling and self-hosted validators meet the same contract.",
+  "schemaVersion": 1,
+  "name": "pqc-agility/T1-verify-single",
+  "status": "proposed",
+  "description": "Median single-signature verification time for ML-DSA-65 (S-01) relative to the classical baseline B-01 on the reference CPU class. Calibration track: it exists to make the reference CPU class, the tolerance band, and the runner specification real. It is not the competition and carries no prize.",
+  "category": "cryptography",
+  "direction": "-",
+  "metric": "M-04",
+  "scalar": "median_verify_us(S-01, ML-DSA-65) / median_verify_us(B-01)",
+  "editablePaths": ["backends/ml-dsa"],
+  "setupCommand": ["bash", "-lc", "harness setup --track T1-verify-single"],
+  "benchmarkCommand": ["bash", "-lc", "harness run --track T1-verify-single --runner runner.json --out score.json"],
+  "scorePath": "score.json",
+  "resultPath": "result.json",
+  "resultSchema": "../../schema/result.schema.json",
+  "minScoreImprovementBips": null,
+  "$minScoreImprovementBips": "set equal to the track's reproduction tolerance band by decision record 0002; a promotion inside the tolerance is noise",
+  "maxSubmissionBytes": 26214400,
+  "gates": [
+    "known-answer tests for the parameter set pass (correctness)",
+    "build is pinned: repository, commit, build flags, compiler, container digest recorded in the manifest",
+    "no network access during setup or run",
+    "result document validates against resultSchema and carries the operator attestation"
+  ],
+  "fixtures": {
+    "corpus_id": "T1-digests-32B-v0 (pending — see fixtures/README.md)",
+    "key_set_id": "T1-keys-n1-v0 (pending)",
+    "draw": "seed = SHA-256(h_fixtures || h_submission || salt_round); h_fixtures = digest of the published fixture bank, h_submission = digest of the canonical submission archive, salt_round = the round secret committed (by hash) before submissions close and revealed with the results. The proposer cannot predict the draw; every node reproduces the same draw."
+  },
+  "runner": {
+    "provider": "testbed",
+    "spec": "runner.json",
+    "devRunner": "T0 hosted job (GitHub Actions) for pre-flight only; a T0 score is a claimed score, never a promotion"
+  },
+  "promotion": "reproduced on >= k nodes in >= 2 regions within the tolerance band (HARNESS.md §5) AND better than the incumbent by more than minScoreImprovementBips",
+  "notes": {
+    "required": true,
+    "minBytes": 5120,
+    "maxBytes": 102400,
+    "template": "../SUBMISSION_NOTE_TEMPLATE.md",
+    "attribution": ["Model", "Harness", "Effort"]
+  },
+  "license": "Apache-2.0 (promoted implementations only; other licences are measured but not promoted)"
+}

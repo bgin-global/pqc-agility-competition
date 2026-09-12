@@ -56,9 +56,11 @@ testbed/README.md         BSafe.network-concept testbed: nodes, hosts, phases, r
 testbed/SCHEMES.md        register of pre-existing signature schemes and classical baselines
 testbed/HARNESS.md        common bench interface, run manifest, reproduction protocol
 testbed/schema/           JSON schema for a testbed run result
+testbed/tracks/           calibration-track contracts (proposed): manifest, rules, runner, fixtures, note template; T1 drafted
 workshops/ROADMAP.md      six-month workshop series W1–W6 with target outputs
 workshops/TEMPLATE.md     workshop record template
-decisions/                ADR-style decision records
+decisions/                ADR-style decision records (0001 = open-benchmark model, proposed)
+docs/AUTORESEARCH.md      proposal: the testbed's calibration tracks as open benchmarks; where agent-driven research is admitted and attributed
 LICENSE / LICENSE-docs    Apache-2.0 for code, CC BY 4.0 for documents
 CODE_OF_CONDUCT.md        Contributor Covenant 2.1
 SUPPORT.md                where to ask

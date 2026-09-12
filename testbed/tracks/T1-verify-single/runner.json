@@ -1,0 +1,28 @@
+{
+  "$comment": "DRAFT v0 — the runner a T1 scalar is valid on. Every TBD is a decision-record field (open question 4 of evaluation/METRICS.md). Nodes record the resolved values in result.json manifest.runner; the scorer refuses a result whose runner does not match this specification.",
+  "cpu_class": "TBD — reference CPU class by decision record (e.g. one named server-class x86-64 microarchitecture generation; whatever is chosen excludes someone and the record says whom)",
+  "cpu_model_allowlist": [],
+  "isa_required": [],
+  "isa_forbidden_in_timed_region": [],
+  "threads": 1,
+  "frequency_policy": "fixed or governor=performance; turbo state recorded",
+  "memory_cap_bytes": 4294967296,
+  "wall_clock_cap_s": 1800,
+  "warmup_ops": 1000,
+  "timed_ops_min": 10000,
+  "statistic": "median of per-operation wall-clock; p99 reported",
+  "sandbox": {
+    "kind": "bubblewrap",
+    "network": false,
+    "environment": "stripped — parameters come from the run manifest, never from environment variables",
+    "inputs": "read-only bind of fixtures and the trusted baseline",
+    "outputs": "one writable directory; the sandboxed process cannot write score.json or result.json",
+    "trusted_parent": "the harness scorer runs outside the sandbox, computes the measurements and the scalar, canonicalises and signs the result"
+  },
+  "container_digest": "TBD — published with the track when it opens",
+  "os_image_digest": "TBD",
+  "dev_runner": {
+    "provider": "github-actions",
+    "note": "T0 pre-flight only; hosted runners are not the reference CPU class and their scores are claimed scores"
+  }
+}
