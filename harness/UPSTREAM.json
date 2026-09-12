@@ -21,6 +21,14 @@
       "what": "the expansion counter is one byte (counter & 0xff): after 256 blocks (8,192 bytes) the stream repeats, so draws needing more than 8,192 bytes reuse bytes",
       "fix": "a 4-byte big-endian counter in the expansion block",
       "status": "FIXED upstream in ea25f42 (draw v2: 32-bit rejection-sampled picks, 4-byte expansion counter; records carry drawVersion, v1 kept for replay) \u2014 vendored here 2026-09-12"
+    },
+    {
+      "id": "D-3",
+      "where": "templates/README.default.md (also README.md, SKILL.md)",
+      "found": "2026-09-12, by this repository's link check on the vendored tree",
+      "what": "[ENTRY.md](ENTRY.md) is a relative link that resolves only at the harness root; the template is copied into instance roots where no ENTRY.md exists. Documentation only.",
+      "fix": "link the arrival contract by its upstream URL in the template, or drop the line from the template",
+      "status": "nit, reported upstream; this repository's link check excludes harness/upstream (verified by its own gates)"
     }
   ],
   "files": {
