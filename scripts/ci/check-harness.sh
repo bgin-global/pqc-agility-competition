@@ -15,7 +15,7 @@ cd "$(dirname "$0")/../.."
 command -v node >/dev/null || { echo "node is required"; exit 1; }
 
 echo "== 1. pin"
-scripts/sync-harness.sh --verify
+bash scripts/sync-harness.sh --verify
 
 echo "== 2. upstream gates"
 (cd harness/upstream && node tools/check.mjs) | tail -3
