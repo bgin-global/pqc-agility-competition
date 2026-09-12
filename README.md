@@ -12,7 +12,9 @@ This repository is where the collaborative, pre-call work happens:
 4. **Specify the crypto-agility testbed** — servers exercising *pre-existing* signature schemes in Bitcoin- and Ethereum-mappable configurations — see [`testbed/`](testbed/).
 5. **Run the workshop series** (six months, Sep 2026 → Feb 2027) that ratifies 1–4 — see [`workshops/ROADMAP.md`](workshops/ROADMAP.md).
 
-Discussion happens on the [BGIN Discourse](https://bgin.discourse.group). This repository is the **record**: decisions, drafts, source material, and testbed specifications. Nothing here is final until the evaluation committee ratifies it and the host publishes the official call.
+Discussion happens in the public [Post-Quantum Crypto Agility Competition category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) on the BGIN Discourse; the [IKP working group](https://bgin.discourse.group/c/working-group-s/ikp-wg/8) carries the wider PQC arc. This repository is the **record**: decisions, drafts, source material, and testbed specifications. Nothing here is final until the evaluation committee ratifies it and the host publishes the official call.
+
+A small amount of material cannot be published here — uncleared sources, nominations and conflict-of-interest disclosures, drafts under embargo. The *rule* for what is held back, and the gate it passes through to be released, is public: [`docs/CONFIDENTIALITY.md`](docs/CONFIDENTIALITY.md).
 
 ## What it is — and what it is not
 
@@ -66,7 +68,7 @@ CITATION.cff              citation metadata
 DCO.md                    Developer Certificate of Origin: the sign-off every commit must carry
 SECURITY.md               reporting policy and the controls this repository enforces
 docs/SIGNING.md           how to set up signed + signed-off commits (required)
-docs/SECURITY_MODEL.md    why: layers, measured Trust over IP baseline, org checklist, ceremonies
+docs/SECURITY_MODEL.md    why: layers, baseline controls, org checklist, ceremonies
 .allowed_signers          SSH signing keys of contributors, for offline verification of the history
 .githooks/ scripts/       commit-msg + pre-push hooks; setup-signing, verify-history, bootstrap-github, CI checks
 .github/rulesets/         the branch and tag rulesets applied to GitHub, versioned here
@@ -76,9 +78,9 @@ resources/                source material with provenance: NEDO briefing PDF + b
 
 ## Status
 
-> **Staging location.** This repository is staged at `github.com/mitchuski/pqc-agility-competition` (signed history, full hardening applied) and will be transferred into the `bgin-global` organization once the convener's organization membership is in place. GitHub redirects the old URL after transfer; the badges and citation above already name the destination.
-
 **Phase A (Autumn 2026): committee forming; outcomes, metrics, and testbed spec in draft.**
+
+2026-09-11 — the public channel is open: the [Post-Quantum Crypto Agility Competition](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) category on the BGIN Discourse carries the [launch](https://bgin.discourse.group/t/the-pqc-migration-prize-the-working-repository-is-open/1053), the [workshop series](https://bgin.discourse.group/t/workshop-series-w1-w6-sep-2026-feb-2027/1054) and the [committee nominations call](https://bgin.discourse.group/t/evaluation-committee-nominations-are-open/1055); the metrics and testbed calls follow in the week of 14 September. The [BGIN project hub](https://bgin-global.org/projects/pqc-migration) points here and at the category. Nominations are open by issue template.
 Indicative calendar (all dates provisional until confirmed by organizers):
 
 | When | Owner | What |
@@ -86,10 +88,11 @@ Indicative calendar (all dates provisional until confirmed by organizers):
 | 2026 Sep 1–3 | BGIN (GDC26) | PQC session(s) for policy alignment |
 | 2026 Sep ~17 | Academic (CBT) | PQC-related academic session |
 | 2026 Oct 9–12 | Ethereum Foundation | Quantum Retreat (Cambridge) — specs & testbeds |
-| 2026 Oct 15–16 | BGIN Block 15 (Georgetown, DC) | PQC / evaluation session (NIST-facing) |
+| 2026 Oct 15–16 | BGIN Block 15 (Georgetown University Capitol Campus, Washington D.C.; hybrid) | PQC keynote 09:20; IKP PQC sessions 09:50–11:20 (resource estimates → judging criteria) and 11:30–13:00 (crypto agility and the NIST signature migration, with NIST participation) |
 | 2026 Oct 19–23 | CSS / BWS | Academic drafting of guidelines & criteria |
 | 2026 Dec 13 | SSR co-located workshop (Baltimore) | Formal call text targeted around this window |
 | 2027 Jan | METI/NEDO | Competition applications open (planned) |
+| 2027 Feb 8–12 | Academic (CoDecFin 2027 at FC'27, Barbados) | Workshop related to the competition; proposed special area *PQC Migration, Evaluation, and Crypto Agility* |
 | 2027 Sep | METI/NEDO | Application deadline (planned) |
 | 2027 Nov → 2028 mid | METI/NEDO / BGIN / testbed | Evaluation rounds; performance evaluation phase |
 | 2028 mid–Sep | METI/NEDO | Winner selection & prize (planned) |
@@ -102,11 +105,11 @@ Indicative calendar (all dates provisional until confirmed by organizers):
 - **Testbed node host** — a university or neutral lab hosts a BSafe.network evaluation node (contracting later; role separated from judging).
 - **SSR workshop** — shape the 13 Dec 2026 programme; review; speak.
 - **Submit / build** — enter the prize when the official call opens (planned 2027).
-- **Discuss & amplify** — Discourse, GDC / Block / CSS-BWS sessions.
+- **Discuss & amplify** — the public [competition category](https://bgin.discourse.group/c/post-quantum-crypto-agility-competition/44) on the BGIN Discourse (and the [IKP working group](https://bgin.discourse.group/c/working-group-s/ikp-wg/8)), GDC / Block / CSS-BWS sessions. Participants (committee, advisors, node hosts, entrants) also get a private Discourse space run by the conveners; decisions still land here (`GOVERNANCE.md` §7).
 
 ## Integrity
 
-Every commit and tag in this repository is cryptographically signed and carries a Developer Certificate of Origin sign-off; `main` changes only by reviewed pull request, and there is no administrator bypass. Set up once with `scripts/setup-signing.sh` and read [`docs/SIGNING.md`](docs/SIGNING.md). The model and the measured Trust over IP baseline it extends are in [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md).
+Every commit and tag in this repository is cryptographically signed and carries a Developer Certificate of Origin sign-off; `main` changes only by reviewed pull request, and there is no administrator bypass. Set up once with `scripts/setup-signing.sh` and read [`docs/SIGNING.md`](docs/SIGNING.md). The model is in [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md).
 
 ## Community
 
@@ -119,4 +122,4 @@ Every commit and tag in this repository is cryptographically signed and carries 
 
 ## License
 
-Documents, specifications, and records in this repository are licensed under [Creative Commons Attribution 4.0 International](LICENSE-docs) (CC BY 4.0). Code — scripts, hooks, workflows, the harness once it lands — is licensed under the [Apache License, Version 2.0](LICENSE). This mirrors the Trust over IP convention for specification repositories. Copyright is held by the contributors; BGIN's publication of a BGIN Standard derived from this work follows BGIN's own process.
+Documents, specifications, and records in this repository are licensed under [Creative Commons Attribution 4.0 International](LICENSE-docs) (CC BY 4.0). Code — scripts, hooks, workflows, the harness once it lands — is licensed under the [Apache License, Version 2.0](LICENSE). Copyright is held by the contributors; BGIN's publication of a BGIN Standard derived from this work follows BGIN's own process.

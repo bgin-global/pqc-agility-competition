@@ -10,7 +10,7 @@
 | S-02 | SLH-DSA | NIST FIPS 205 | Stateless hash-based (SPHINCS+ lineage) | SHA2/SHAKE-128s (32 / 7856) · 128f (32 / 17088) · 192s (48 / 16224) · 256s (64 / 29792) | Conservative assumptions; large signatures | candidate |
 | S-03 | FN-DSA (Falcon) | NIST FIPS 206 (draft status — confirm at ruling) | NTRU lattice | Falcon-512 (897 / about 666) · Falcon-1024 (1793 / about 1280) | Smallest lattice signatures; floating-point signing is the implementation risk; raised in the IKP-WG session as a top candidate for blockchains, including smart-contract-executable verification | candidate |
 | S-04 | XMSS / XMSS^MT | NIST SP 800-208 (IETF RFC 8391) | Stateful hash-based | e.g. XMSS-SHA2_10_256 (64 / 2500) | State management is the operational risk; Ethereum consensus-layer work is heading toward hash-based aggregation (XMSS-style with Poseidon2 for ZK-friendliness — a non-SP-800-208 parameterization: **ruling needed**) | candidate |
-| S-05 | LMS / HSS | NIST SP 800-208 (IETF RFC 8554) | Stateful hash-based | e.g. LMS-SHA256_M32_H10 (60 / about 1600) | Same state caveat as S-04 | candidate |
+| S-05 | LMS / HSS | NIST SP 800-208 (IETF RFC 8554) | Stateful hash-based | e.g. LMS-SHA256_M32_H10 (60 / about 1600) | Same state caveat as S-04. The failure is demonstrated, not theoretical: signing twice from one state exposes the key ([Project Eleven, *Key recovery from state reuse*, Sep 2026](https://www.projecteleven.com/blog/key-recovery-from-state-reuse)) — state handling is a scored property for S-04 and S-05, not a footnote | candidate |
 
 ## B. Classical baselines (measured for the deltas, not candidates)
 
@@ -28,7 +28,7 @@
 | C-02 | Bitcoin quantum-resistant output type (P2QRH / BIP-360 direction) | BTC-tx | Proposal-stage; reference for the BTC mapping only, no endorsement | ruling |
 | C-03 | Ethereum account-abstraction path (user-chosen verification logic; precompile vs. contract verification) | ETH-user | Gives M-10 both paths | ruling |
 | C-04 | Ethereum consensus-layer BLS to hash-based aggregation | ETH-cons | Aggregation is the dominant cost; see S-04 note | ruling |
-| C-05 | ZK-wrapped verification (prove many PQ signatures, verify one proof) | L2, ETH-cons | Aggregation via ZKP came up repeatedly in the IKP-WG session; gives M-16 | ruling |
+| C-05 | ZK-wrapped verification (prove many PQ signatures, verify one proof) | L2, ETH-cons | Aggregation via ZKP came up repeatedly in the IKP-WG session; gives M-16. Post-quantum proof systems are now measurable rather than hypothetical — a lattice-commitment zkVM with proofs under 100 KB ([Lattice Jolt, a16z crypto, Sep 2026](https://a16zcrypto.com/posts/article/lattice-snarks-jolt-post-quantum-faster/)) and client-side proving on consumer phones ([ProveKit](https://provekit.org/)) — so the reference proof system for M-16 is a W2/W3 choice | ruling |
 | C-06 | Advanced key management: MPC / threshold, multisig, recovery, custody boundaries | all | Named theme; may be a separate evaluation lane rather than a scheme row | ruling |
 
 ## D. Reference implementations (committee to pick; neutrality matters)
