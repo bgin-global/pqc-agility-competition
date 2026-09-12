@@ -47,6 +47,16 @@ Comparative evaluation is anchored on **Bitcoin (BTC)** and **Ethereum (ETH)**. 
 | M-21 | Legacy verification continuity | pass / fail + cost: can pre-migration signatures still be verified after cutover, and at what node cost | a+b | all | Scenario; GDC26 raised keeping verification of legacy signatures as a practical challenge | candidate |
 | M-22 | PQC-readiness claim substantiation | checklist: does the stack meet the "PQC-ready chain" definition (Dec 2026 deliverable) rather than a superficial claim | a | all | Track (a) against the published definition | candidate |
 
+## Directions (proposed, for W2)
+
+A benchmark track needs a direction per metric; the register's rows acquire one when the committee adopts them. Proposed:
+
+| Lower is better | Higher is better | Gate or ordinal (no direction) |
+|---|---|---|
+| M-01, M-02, M-03, M-04, M-06, M-07, M-08, M-09, M-10, M-11, M-13, M-14, M-16, M-17 | M-05, M-12, M-18 | M-15 (ordinal), M-19, M-20 (banded), M-21 (pass/fail gate + cost, lower), M-22 (checklist) |
+
+Performance metrics are scored relative to the classical baseline on the same runner (`RUBRIC.md` §3), so a track's scalar is a ratio and "lower is better" means below 1.0 beats the baseline.
+
 ## Open questions carried from the IKP-WG discussion
 
 1. Is the headline quantity **total overhead** or **migration speed**? (Both appear in the register; the rubric decides the weights.)

@@ -20,6 +20,8 @@ This repository is the record; the BGIN Discourse is the conversation. Most cont
 | A candidate metric | Issue *Metric proposal* → PR adding an `M-nn` row to `evaluation/METRICS.md` with status `candidate` |
 | A signature scheme or integration path for the testbed | Issue *Scheme proposal* → committee scope ruling (`decisions/`) → PR to `testbed/SCHEMES.md` |
 | Offer to host a testbed node | Issue *Node host offer* (institution, region, hardware class, constraints) |
+| A calibration track | Issue *Track proposal* → PR adding `testbed/tracks/<track>/` (manifest, RULES, runner, fixtures README) with status `proposed`; opens by decision record |
+| A submission to an open track | The track's `RULES.md`; note from `testbed/tracks/SUBMISSION_NOTE_TEMPLATE.md`; validated by the T0 runner, promoted by reproduction |
 | Committee nomination | Issue *Committee nomination* + COI disclosure per `evaluation/COI_POLICY.md` |
 | Workshop record | Copy `workshops/TEMPLATE.md` to `workshops/Wn-YYYY-MM-DD-slug.md`; PR within a week of the session |
 | Decision record | Copy `decisions/0000-template.md`; number sequentially |

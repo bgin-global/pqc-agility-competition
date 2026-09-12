@@ -21,6 +21,7 @@ Every scheme backend exposes the same operations. Optional operations return "un
 - **Key sets:** n in {1, 64, 1024, 100000} for batch and aggregate scenarios.
 - **Reference block / tx mix** for M-07 to M-09: chosen by decision record; published as a fixture file with its provenance.
 - **Legacy corpus** for M-21: pre-migration signatures that must remain verifiable after cutover.
+- **Draw** *(proposed)*: fixtures are banks, not sequences; the instance sequence a node times is derived from the submission digest and a round secret (`tracks/T1-verify-single/fixtures/README.md`).
 
 ## 3. Run manifest
 
@@ -46,6 +47,7 @@ One JSON document per run conforming to `schema/result.schema.json`: manifest + 
 3. A measurement reproduces when each node's median lies within the agreed tolerance band of the reference (tolerance per metric class; hardware normalization only where a decision record allows it).
 4. The reproduction count is M-18 and feeds gate G3 of the rubric.
 5. All manifests, results, and attestations are published together; disagreements are published too.
+6. *(proposed, `decisions/0001`)* On a calibration track the reference run is the **promoted** submission: reproduced per 2–3 **and** better than the incumbent by more than the track's promotion bar, which equals the tolerance band. The instances a node runs are drawn from `seed = SHA-256(h_fixtures || h_submission || salt_round)`, so the submitter commits before the draw and every node runs the same draw (`testbed/tracks/README.md`).
 
 ## 6. Non-goals of the harness
 
