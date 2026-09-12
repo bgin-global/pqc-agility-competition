@@ -28,7 +28,7 @@ fold (`chronicles/2026-09-12_r1_two-mirages.md`). r2, the proposer's seat
 handed to two Claude Code subagents via `--proposals`, the same local prover:
 both candidates VALIDATED at 95/95, the restructurer's folded, 1,115 → 1,069
 (`chronicles/2026-09-12_r2_the-first-fold.md`). A first attempt at r2 died of
-transport and was refused as evidence; it sits at `runs/r2-incomplete/`. That
+transport and was refused as evidence; it sits at `chronicles/evidence/r2-incomplete/`, outside `runs/` so the verifier does not read a round the engine refused as a run. That
 is what the gate looks like holding, and then opening.
 
 Fold as keystone: `node tools/check_path.mjs runs/r1/r1.1/p<i>-<lever>/candidate.md`

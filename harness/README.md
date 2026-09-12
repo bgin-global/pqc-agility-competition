@@ -11,7 +11,7 @@ harness/
   instance/         the pqc-calibration instance — the editable half, and the record
 ```
 
-**`upstream/`** is synced, never edited. `scripts/sync-harness.sh <checkout> [commit]` replaces it from a pinned commit of the upstream repository and rewrites `UPSTREAM.json`; it refuses to run while `instance/` has uncommitted changes and refuses a dirty upstream distribution. `scripts/sync-harness.sh --verify` recomputes every hash. This is the same discipline the community benchmark CLIs call `sync --harness-only`: the non-editable files follow upstream, the editable paths are preserved exactly.
+**`upstream/`** is synced, never edited. `scripts/sync-harness.sh <checkout> [commit]` generates the distribution with the upstream's own `tools/make_default.mjs` in a clean temporary worktree at the pinned commit (the distribution is not tracked upstream — it is derived from the commit, so what lands here never depends on the state of anyone's working tree), replaces `upstream/`, and rewrites `UPSTREAM.json`; it refuses to run while `instance/` has uncommitted changes. `scripts/sync-harness.sh --verify` recomputes every hash. This is the same discipline the community benchmark CLIs call `sync --harness-only`: the non-editable files follow upstream, the editable paths are preserved exactly.
 
 **`instance/`** is the pqc-calibration instance scaffolded by the upstream's own `tools/new_instance.mjs` and then filled: `harness.config.mjs` (the Gap first, then the objective, the gates, the lenses, the seat prompts, the schemas, the conformance checks), `tools/measure.mjs` (the counting rule as code), `frontier.json` (the only place numbers live), `claims_register.md`, `manifest.yaml`, `notes/`, `runs/` (every round's saved bytes), `chronicles/`. Its README says what it is and what it is not.
 
@@ -33,11 +33,11 @@ node harness/instance/tools/measure.mjs                              # the count
 scripts/ci/check-harness.sh                                          # what CI runs: pin · upstream gates · instance (conformance reported, enforced once the baseline is measured)
 ```
 
-The stub round on record (`instance/runs/smoke/`) shows the plumbing: four proposals (one per lens), each with `proposal_canon.json` whose sha256 is `hProposal`, a `gap.json` whose `seedHex = sha256(hSource ‖ hProposal ‖ salt)` with `hSource` = the digest of `testbed/tracks/T1-verify-single/benchmark.json`, a 10,000-index draw from a bank of 65,536, and a verdict of MIRAGE (the stub never validates). `verify_run` passes on it.
+The stub rounds on record (`instance/runs/smoke/`, pre-fix; `instance/runs/smoke-v2/`, post-fix) show the plumbing: four proposals (one per lens), each with `proposal_canon.json` whose sha256 is `hProposal`, a `gap.json` whose `seedHex = sha256(hSource ‖ hProposal ‖ salt)` with `hSource` = the digest of `testbed/tracks/T1-verify-single/benchmark.json`, a 10,000-index draw from a bank of 65,536, and a verdict of MIRAGE (the stub never validates). `verify_run` passes on it.
 
 ## What is known to be wrong
 
-`UPSTREAM.json` carries `knownDefects`. Two were found on the first stub round and are reported upstream: the draw takes one byte per pick (biased for a large bank — T1 cannot open on it) and the seed expansion counter is one byte (the stream repeats after 8,192 bytes). Both are a few lines upstream; the fix arrives here by `scripts/sync-harness.sh` when the pin moves. Until then `instance/notes/UPSTREAM_DEFECTS.md` is the record and `frontier.json` carries the blocker as an open target.
+`UPSTREAM.json` carries `knownDefects` — and their fixes. Two were found on the first stub round (`instance/runs/smoke/`): the draw took one byte per pick (biased for a large bank — a 10,000-draw from 65,536 never passed index 10,230) and the seed expansion counter was one byte. Both were fixed upstream the same day (`ea25f42`, draw v2: 32-bit rejection-sampled picks, a 4-byte counter, `drawVersion` recorded in every `gap.json`, v1 kept so older records replay) and vendored here by `scripts/sync-harness.sh`; `instance/runs/smoke-v2/` shows the draw reaching the top of the bank. `instance/notes/UPSTREAM_DEFECTS.md` keeps the record of the finding.
 
 ## What it is not
 

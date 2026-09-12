@@ -49,6 +49,7 @@ run('engine tests', ['engine/loop.test.mjs'])
 run('gap tool tests', ['engine/gap.test.mjs'])
 run('salt-mode tests', ['engine/loop.salt.test.mjs'])
 run('console + mint tests', ['tools/console.test.mjs'])
+run('entry regressions', ['tools/entry.test.mjs'])
 run('claims register (enforced-by gate)', ['tools/check_claims.mjs'])
 
 // ---- 3. every instance ---------------------------------------------------
@@ -68,6 +69,7 @@ const scan = (dir) => {
 }
 scan(root)
 scan(join(root, 'examples'))
+scan(join(root, 'evocations'))   // the board: every evocation is an instance and is gated like one
 
 // `templates/` is skipped above because it is not an instance — it is the
 // blank a newcomer copies, and it is REQUIRED to fail. Assert that it does.

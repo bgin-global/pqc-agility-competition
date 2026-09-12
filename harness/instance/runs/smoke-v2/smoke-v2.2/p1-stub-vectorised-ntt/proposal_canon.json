@@ -1,0 +1,1 @@
+{"compressedText":"","diffPlan":"no change","expectedMetric":0,"hardConstraintNote":"unchanged text cannot violate the hard constraint","lens":"vectorised-ntt","leverId":"stub-vectorised-ntt","rationale":"deterministic stub: restates the artefact so the loop can be exercised without a model","recordJson":"{}","title":"stub lever through vectorised-ntt"}

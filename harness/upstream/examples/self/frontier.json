@@ -89,7 +89,8 @@
         "prover": "gemma3:27b"
       },
       "phiInference": 1,
-      "note": "INCOMPLETE — two seats lost to transport (Ollama fetch failed); one VALIDATED verdict landed and was NOT counted (GR-5); kept as evidence"
+      "note": "INCOMPLETE — two seats lost to transport (Ollama fetch failed); one VALIDATED verdict landed and was NOT counted (GR-5); kept as evidence",
+      "evidence": "chronicles/evidence/r2-incomplete/"
     },
     {
       "runId": "r2",
