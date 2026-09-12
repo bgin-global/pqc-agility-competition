@@ -25,6 +25,7 @@ This repository is the record; the BGIN Discourse is the conversation. Most cont
 | Committee nomination | Issue *Committee nomination* + COI disclosure per `evaluation/COI_POLICY.md` |
 | Workshop record | Copy `workshops/TEMPLATE.md` to `workshops/Wn-YYYY-MM-DD-slug.md`; PR within a week of the session |
 | Decision record | Copy `decisions/0000-template.md`; number sequentially |
+| The calibration harness | `harness/instance/` is the editable half (PR, conformance reported by CI); `harness/upstream/` changes only by `scripts/sync-harness.sh` from a pinned upstream commit |
 
 ## Pull requests
 

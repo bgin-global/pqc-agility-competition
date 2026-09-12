@@ -1,0 +1,34 @@
+{
+  "authority": "This file is the single source of truth for numbers (GR-1). No metric appears in prose except as a citation of this file. Keystone-only writes.",
+  "updated": "2026-09-12",
+  "track": "T1-verify-single",
+  "objective": {
+    "metric": "T1 scalar = median_verify_us(S-01 ML-DSA-65) / median_verify_us(B-01) on the reference runner over the drawn instance sequence; lower is better",
+    "gate": "KATs pass AND pinned build AND no network AND schema-valid attested result with matching runner and re-derivable draw AND reproduced on >= k nodes in >= 2 regions within tolerance",
+    "hardConstraint": "only backends/ml-dsa/ changed; verification unchanged in what it checks; parameter set unchanged; note present with Model/Harness/Effort"
+  },
+  "promotion": {
+    "k": null,
+    "toleranceBips": null,
+    "minScoreImprovementBips": null,
+    "saltScope": "round",
+    "decidedBy": "decisions/0002 (W3) — until then no verdict can fold"
+  },
+  "baseline": {
+    "metric": null,
+    "date": null,
+    "how": "tools/measure.mjs on the pinned baseline backend named in testbed/tracks/T1-verify-single/benchmark.json, on the runner in runner.json — UNMEASURED: the harness v0 (testbed/HARNESS.md §7) is not built",
+    "runner": null
+  },
+  "best": {
+    "metric": null,
+    "leverIds": [],
+    "attestations": 0,
+    "evidence": "none yet"
+  },
+  "openTarget": {
+    "id": "OT-1",
+    "statement": "Measure the baseline: build the harness v0 (liboqs ML-DSA-65 + libsecp256k1 baseline, single node, M-01..M-05) so that tools/measure.mjs returns a number on the T0 runner. Until then every round is plumbing.",
+    "status": "OPEN"
+  }
+}

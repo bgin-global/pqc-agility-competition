@@ -1,0 +1,11 @@
+# generated projections — re-run = re-true (spellweb / star / wiki_emit)
+examples/*/web/
+examples/*/wiki/
+# farm runtime state — ownership is claimed, never shipped
+examples/wiki-farm/*/status/
+# operator-local state — run inputs (salt secrets) and machine paths
+.r*args.json
+tools/console.roots.json
+dist/
+# generated feed projections — re-run = re-derived (emit_feed.mjs)
+examples/*/feed.json

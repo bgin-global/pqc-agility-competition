@@ -1,0 +1,21 @@
+# manifest.yaml — pipeline state. Keystone-only writes (GR-10).
+pipeline: pqc-calibration
+version: 1
+track: T1-verify-single
+lineage:
+  harness: agentprivacy dual-agent harness (default distribution), vendored at ../upstream — see ../UPSTREAM.json for the pinned commit
+  attribution: "Harness: <runtime> with the agentprivacy dual-agent harness (pqc-calibration instance)"
+  disclosure: the harness is one of the conveners' lanes; disclosed under evaluation/COI_POLICY.md before any vote on decisions/0001
+gates:
+  - G0-conform        # node ../upstream/engine/conform.mjs . green
+  - G1-held-out       # every track gate passes on the Gap-drawn instance sequence, on >= k nodes
+  - G2-hard-constraint
+  - G3-frontier-fold  # keystone folds, frontier first, prose second; a fold is a promotion and needs k attestations
+  - G4-door           # submit / push / publish / node onboarding — the First Person's
+rules:
+  g4_owner: first-person          # T6 — non-delegable
+  keystone_only_writes: [frontier.json, claims_register.md, manifest.yaml]
+  scratch_dir: runs/
+  chronicle_per_session: chronicles/
+  salt_scope: round               # one secret per round, committed by hash before submissions close, shared with assay nodes after commitment, revealed with results
+artifacts: {}

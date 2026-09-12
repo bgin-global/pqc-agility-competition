@@ -1,0 +1,141 @@
+{
+  "authority": "This file is the single source of truth for numbers (GR-1). No metric appears in prose except as a citation of this file. Keystone-only writes.",
+  "updated": "2026-09-12",
+  "objective": {
+    "metric": "words of artifact/PATH.md (whitespace-split tokens; tools/measure.mjs), lower is better",
+    "gate": "census over census.json: every witness present in the candidate (tools/check_path.mjs), N/N or MIRAGE",
+    "hardConstraint": "still the document a stranger opens first: five commands in order with what each writes, the loop table, the adoption steps, the constitution, the box layout; nothing invented"
+  },
+  "gate": {
+    "N": 95,
+    "mode": "census",
+    "how": "node tools/check_path.mjs <candidate>"
+  },
+  "baseline": {
+    "metric": 1115,
+    "date": "2026-09-12",
+    "how": "node tools/measure.mjs → metric (whitespace-split tokens of artifact/PATH.md); census 95/95"
+  },
+  "best": {
+    "metric": 1069,
+    "leverIds": [
+      "fold-inventory-into-box-and-flags-into-duel"
+    ],
+    "evidence": "runs/r2/r2.1/p2-fold-inventory-into-box-and-flags-into-duel/verdict.json — VALIDATED 95/95 by gemma3:27b (prover), proposer claude-opus-5 via Claude Code subagents handed in through drivers/run.mjs --proposals; keystone re-ran tools/check_path.mjs on candidate.md: 95/95 at 1069; seeds verified by tools/verify_run.mjs. The line-editor lever (1092, also VALIDATED 95/95) is dominated and not folded."
+  },
+  "history": [
+    {
+      "metric": 1088,
+      "date": "2026-09-12",
+      "lever": null,
+      "note": "baseline — the newcomer path as hand-written; census N=93 drawn from it; run r1 (two mirages) stands against this version, source sha256 69e72588…"
+    },
+    {
+      "metric": 1115,
+      "date": "2026-09-12",
+      "lever": null,
+      "note": "re-baselined — title names the agentprivacy dual-agent harness, PATHWAYS.md pointer added; census N=95"
+    },
+    {
+      "metric": 1069,
+      "date": "2026-09-12",
+      "lever": "fold-inventory-into-box-and-flags-into-duel",
+      "target": "OT-1",
+      "coverage": {
+        "mode": "census",
+        "N": 95,
+        "n": 95,
+        "detection": 1
+      },
+      "coverageNote": "VALIDATED_CENSUS: every witness probed; the prose inventory the box already carries deleted; the two-model flags moved into the rung that introduces the second model",
+      "chronicle": "chronicles/2026-09-12_r2_the-first-fold.md"
+    }
+  ],
+  "attempts": [
+    {
+      "runId": "r1",
+      "date": "2026-09-12",
+      "against": 1088,
+      "models": {
+        "proposer": "gemma3:12b",
+        "prover": "gemma3:27b"
+      },
+      "phiInference": 1,
+      "tally": {
+        "VALIDATED": 0,
+        "MIRAGE": 2,
+        "BLOCKED": 0
+      },
+      "candidates": [
+        {
+          "lever": "line-editor",
+          "words": 720,
+          "census": "80/93"
+        },
+        {
+          "lever": "restructurer",
+          "words": 379,
+          "census": "49/93"
+        }
+      ],
+      "chronicle": "chronicles/2026-09-12_r1_two-mirages.md"
+    },
+    {
+      "runId": "r2-incomplete",
+      "date": "2026-09-12",
+      "against": 1115,
+      "models": {
+        "proposer": "claude-opus-5 (Claude Code subagents, one per lens)",
+        "prover": "gemma3:27b"
+      },
+      "phiInference": 1,
+      "note": "INCOMPLETE — two seats lost to transport (Ollama fetch failed); one VALIDATED verdict landed and was NOT counted (GR-5); kept as evidence",
+      "evidence": "chronicles/evidence/r2-incomplete/"
+    },
+    {
+      "runId": "r2",
+      "date": "2026-09-12",
+      "against": 1115,
+      "models": {
+        "proposer": "claude-opus-5 (Claude Code subagents, one per lens)",
+        "prover": "gemma3:27b"
+      },
+      "phiInference": 1,
+      "tally": {
+        "VALIDATED": 2,
+        "MIRAGE": 0,
+        "BLOCKED": 0
+      },
+      "candidates": [
+        {
+          "lever": "line-edit-connective-prose",
+          "words": 1092,
+          "census": "95/95",
+          "verdict": "VALIDATED, dominated"
+        },
+        {
+          "lever": "fold-inventory-into-box-and-flags-into-duel",
+          "words": 1069,
+          "census": "95/95",
+          "verdict": "VALIDATED, FOLDED"
+        }
+      ],
+      "chronicle": "chronicles/2026-09-12_r2_the-first-fold.md"
+    }
+  ],
+  "openTarget": {
+    "id": "OT-2",
+    "statement": "below 1069 words with all 95 witnesses and the hard constraint intact; the line-editor cuts (23 words of connective prose) compose with this fold and have not been applied on top of it",
+    "status": "OPEN"
+  },
+  "closedTargets": [
+    {
+      "id": "OT-1",
+      "statement": "a shorter newcomer path that still carries all 95 witnesses",
+      "closedBy": "fold-inventory-into-box-and-flags-into-duel",
+      "date": "2026-09-12",
+      "from": 1115,
+      "to": 1069
+    }
+  ]
+}

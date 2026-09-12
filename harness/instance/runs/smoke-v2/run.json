@@ -1,0 +1,55 @@
+{
+  "name": "pqc-calibration",
+  "runId": "smoke-v2",
+  "driver": "stub",
+  "status": "COMPLETE",
+  "rounds": 2,
+  "tally": {
+    "VALIDATED": 0,
+    "MIRAGE": 8,
+    "BLOCKED": 0
+  },
+  "confirmed": [],
+  "models": {
+    "proposer": "stub",
+    "prover": "stub"
+  },
+  "phiInference": 0,
+  "measured": {
+    "status": "unmeasured",
+    "metric": null,
+    "stale": false,
+    "track": "T1-verify-single",
+    "trackStatus": "proposed",
+    "scalarRule": "median_verify_us(S-01, ML-DSA-65) / median_verify_us(B-01)",
+    "candidate": null,
+    "draw": null,
+    "runner": null,
+    "harnessV0": "not built — testbed/HARNESS.md §7",
+    "leverCosts": [
+      {
+        "lever": "vectorised-ntt",
+        "cost": "medium",
+        "ceiling": "unknown until the baseline is measured"
+      },
+      {
+        "lever": "hash-path",
+        "cost": "medium",
+        "ceiling": "unknown until the baseline is measured"
+      },
+      {
+        "lever": "memory-layout",
+        "cost": "low",
+        "ceiling": "unknown until the baseline is measured"
+      },
+      {
+        "lever": "verify-batch-reuse",
+        "cost": "low",
+        "ceiling": "unknown until the baseline is measured"
+      }
+    ],
+    "notes": "frontier.baseline.metric is null; no number exists to compare against. This is the open target OT-1."
+  },
+  "sourceHash": "58f58aa851ef2e8fd190f727591ad618bc8b1a9b2d32f8a7f5104e98ecf0cea0",
+  "keystoneTodo": "fold VALIDATED levers (frontier.json first, prose second — GR-1); file killedLeverDrafts (GR-6); review + file the chronicle drafts (GR-7); node engine/conform.mjs green before and after (G0); door items listed for the First Person, never opened (G4/T6)"
+}
