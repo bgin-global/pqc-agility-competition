@@ -8,9 +8,9 @@
 |---|---|---|---|---|---|---|
 | S-01 | ML-DSA | NIST FIPS 204 | Module lattice (Dilithium lineage) | ML-DSA-44 (1312 / 2420) · ML-DSA-65 (1952 / 3309) · ML-DSA-87 (2592 / 4627) | Named in the briefing as the starting point | candidate |
 | S-02 | SLH-DSA | NIST FIPS 205 | Stateless hash-based (SPHINCS+ lineage) | SHA2/SHAKE-128s (32 / 7856) · 128f (32 / 17088) · 192s (48 / 16224) · 256s (64 / 29792) | Conservative assumptions; large signatures | candidate |
-| S-03 | FN-DSA (Falcon) | NIST FIPS 206 (draft status — confirm at ruling) | NTRU lattice | Falcon-512 (897 / about 666) · Falcon-1024 (1793 / about 1280) | Smallest lattice signatures; floating-point signing is the implementation risk; raised in the IKP-WG session as a top candidate for blockchains, including smart-contract-executable verification | candidate |
+| S-03 | FN-DSA (Falcon) | NIST FIPS 206 — **draft**; final expected late 2026 or 2027 ([NIST, FIPS 206 / FN-DSA presentation](https://csrc.nist.gov/presentations/2025/fips-206-fn-dsa-falcon); status as indexed by the PQC Audit Index, 2026-09-12) — confirm at ruling | NTRU lattice | Falcon-512 (897 / about 666) · Falcon-1024 (1793 / about 1280) | Smallest lattice signatures; floating-point signing is the implementation risk; raised in the IKP-WG session as a top candidate for blockchains, including smart-contract-executable verification | candidate |
 | S-04 | XMSS / XMSS^MT | NIST SP 800-208 (IETF RFC 8391) | Stateful hash-based | e.g. XMSS-SHA2_10_256 (64 / 2500) | State management is the operational risk; Ethereum consensus-layer work is heading toward hash-based aggregation (XMSS-style with Poseidon2 for ZK-friendliness — a non-SP-800-208 parameterization: **ruling needed**) | candidate |
-| S-05 | LMS / HSS | NIST SP 800-208 (IETF RFC 8554) | Stateful hash-based | e.g. LMS-SHA256_M32_H10 (60 / about 1600) | Same state caveat as S-04. The failure is demonstrated, not theoretical: signing twice from one state exposes the key ([Project Eleven, *Key recovery from state reuse*, Sep 2026](https://www.projecteleven.com/blog/key-recovery-from-state-reuse)) — state handling is a scored property for S-04 and S-05, not a footnote | candidate |
+| S-05 | LMS / HSS | NIST SP 800-208 (IETF RFC 8554) | Stateful hash-based | e.g. LMS_SHA256_M32_H10 (60 / 1,456 single-level; HSS two-level about 2,964) | Same state caveat as S-04. The failure is demonstrated, not theoretical: signing twice from one state exposes the key ([Project Eleven, *Key recovery from state reuse*, Sep 2026](https://www.projecteleven.com/blog/key-recovery-from-state-reuse)) — state handling is a scored property for S-04 and S-05, not a footnote | candidate |
 
 ## B. Classical baselines (measured for the deltas, not candidates)
 
@@ -39,3 +39,8 @@
 - Baselines: `libsecp256k1`, `blst`.
 
 The harness pins implementation, commit, and build flags in the run manifest; results are never comparable across unpinned builds.
+
+## Out of scope by gate G1, stated plainly
+
+NIST's additional-signature on-ramp candidates still in evaluation (round 3 as of 2026-09: SQIsign, HAWK, FAEST, MQOM, SDitH, UOV, MAYO, QR-UOV, SNOVA) are **not** in the testbed until NIST standardizes or selects them. The register lists pre-existing NIST-class schemes only; a candidate joins by a decision record after the primitive's status changes, never by a proposal alone.
+

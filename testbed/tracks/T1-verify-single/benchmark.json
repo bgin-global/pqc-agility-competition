@@ -8,9 +8,19 @@
   "direction": "-",
   "metric": "M-04",
   "scalar": "median_verify_us(S-01, ML-DSA-65) / median_verify_us(B-01)",
-  "editablePaths": ["backends/ml-dsa"],
-  "setupCommand": ["bash", "-lc", "harness setup --track T1-verify-single"],
-  "benchmarkCommand": ["bash", "-lc", "harness run --track T1-verify-single --runner runner.json --out score.json"],
+  "editablePaths": [
+    "backends/ml-dsa"
+  ],
+  "setupCommand": [
+    "bash",
+    "-lc",
+    "harness setup --track T1-verify-single"
+  ],
+  "benchmarkCommand": [
+    "bash",
+    "-lc",
+    "harness run --track T1-verify-single --runner runner.json --out score.json"
+  ],
   "scorePath": "score.json",
   "resultPath": "result.json",
   "resultSchema": "../../schema/result.schema.json",
@@ -18,7 +28,7 @@
   "$minScoreImprovementBips": "set equal to the track's reproduction tolerance band by decision record 0002; a promotion inside the tolerance is noise",
   "maxSubmissionBytes": 26214400,
   "gates": [
-    "known-answer tests for the parameter set pass (correctness)",
+    "NIST ACVP / CAVP known-answer tests for the parameter set pass (correctness)",
     "build is pinned: repository, commit, build flags, compiler, container digest recorded in the manifest",
     "no network access during setup or run",
     "result document validates against resultSchema and carries the operator attestation"
@@ -39,7 +49,11 @@
     "minBytes": 5120,
     "maxBytes": 102400,
     "template": "../SUBMISSION_NOTE_TEMPLATE.md",
-    "attribution": ["Model", "Harness", "Effort"]
+    "attribution": [
+      "Model",
+      "Harness",
+      "Effort"
+    ]
   },
   "license": "Apache-2.0 (promoted implementations only; other licences are measured but not promoted)"
 }
